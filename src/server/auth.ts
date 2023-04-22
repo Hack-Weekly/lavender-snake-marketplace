@@ -6,6 +6,11 @@ import {
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import { env } from "~/env.mjs";
+import { DetaAdapter } from "next-auth-deta";
+import { Deta } from "deta";
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+const deta = Deta(env.DETA_ACCESS_KEY);
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -33,7 +38,9 @@ declare module "next-auth" {
  *
  * @see https://next-auth.js.org/configuration/options
  */
+
 export const authOptions: NextAuthOptions = {
+  adapter: DetaAdapter(deta),
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
