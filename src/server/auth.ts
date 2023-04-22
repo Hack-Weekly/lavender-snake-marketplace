@@ -7,10 +7,7 @@ import {
 import DiscordProvider from "next-auth/providers/discord";
 import { env } from "~/env.mjs";
 import { DetaAdapter } from "next-auth-deta";
-import { Deta } from "deta";
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-const deta = Deta(env.DETA_ACCESS_KEY);
+import { deta } from "./deta";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
