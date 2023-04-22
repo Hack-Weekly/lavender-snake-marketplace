@@ -9,8 +9,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "deta": "^1.1.0",
     "next": "^13.2.4",
     "next-auth": "^4.21.0",
+    "next-auth-deta": "^1.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.21.4"
