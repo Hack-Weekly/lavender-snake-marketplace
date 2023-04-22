@@ -23,3 +23,5 @@ Lavender Snake's implementation on Marketplace/E-commerce
    npm run dev
    ```
 7. Make sure the project is running on port 3000 (because of some necessary hard-coding issue)
+
+## Note on API development
