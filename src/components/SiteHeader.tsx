@@ -1,5 +1,5 @@
 import { SearchIcon, BookmarkIcon, ShoppingCartIcon } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import UserInfo from "./UserInfo";
 
 export default function SiteHeader() {
   return (
@@ -74,39 +74,6 @@ function Bookmark() {
     <IconButton>
       <BookmarkIcon />
     </IconButton>
-  );
-}
-
-function UserInfo() {
-  const { data: session } = useSession();
-
-  console.log(session);
-
-  if (!session) {
-    return (
-      <button
-        className="group relative inline-block overflow-hidden rounded-md border border-violet-200 px-8 py-2 focus:outline-none focus:ring"
-        onClick={() => void signIn()}
-      >
-        <span className="absolute inset-y-0 right-0 w-[2px] bg-violet-200 transition-all group-hover:w-full group-active:bg-violet-200"></span>
-
-        <span className="relative text-sm font-medium text-violet-200 transition-colors group-hover:text-slate-950">
-          Login
-        </span>
-      </button>
-    );
-  }
-
-  return (
-    <div
-      className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full object-cover shadow-inner"
-      onClick={() => void signOut()}
-    >
-      <img
-        src={session?.user.image || "/default-user-image.jpg"}
-        alt="user profile"
-      />
-    </div>
   );
 }
 
