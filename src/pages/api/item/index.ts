@@ -26,7 +26,6 @@ export default async function handler(
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
           const item = await itemDb.put(data);
-          console.log(item);
           res.status(200).json(item);
         } catch (error) {
           res.status(500).json({ error: error });
