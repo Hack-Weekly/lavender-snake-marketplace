@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextApiRequest, NextApiResponse } from "next";
 import errorResponse from "~/server/errorResponse";
-import { itemDb } from "../itemUtils";
+import { itemDb } from "~/server/itemUtils";
 
 // GET all items.
 
