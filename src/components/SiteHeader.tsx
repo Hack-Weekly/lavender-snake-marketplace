@@ -1,4 +1,4 @@
-import { SearchIcon, BookmarkIcon, ShoppingCartIcon } from "lucide-react";
+import { SearchIcon, BookmarkIcon, ShoppingCartIcon, PlusIcon } from "lucide-react";
 import UserInfo from "./UserInfo";
 
 export default function SiteHeader() {
@@ -29,6 +29,7 @@ function Nav() {
     <div className="mr-4 flex flex-1 items-center justify-between">
       <Search />
       <div className="flex gap-6">
+        <Plus />
         <Cart />
         <Bookmark />
         <UserInfo />
@@ -59,6 +60,14 @@ function Search() {
       </span>
     </div>
   );
+}
+
+function Plus() {
+  return (
+  <IconButton> 
+    <PlusIcon />
+  </IconButton>
+  )
 }
 
 function Cart() {
