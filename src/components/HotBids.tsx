@@ -22,8 +22,8 @@ const baskervville = Baskervville({
 
 export default function HotBids(){
     return (
-        <div className="bg-geraldineBg flex flex-col items-center p-6">
-            <div className={`flex flex-row gap-2 ${poppins.className} font-bold text-4xl mb-4`}>
+        <div className="bg-geraldineBg flex flex-col items-center px-6 py-10">
+            <div className={`flex flex-row gap-2 ${poppins.className} font-bold text-4xl mb-6`}>
                 <FireIcon />
                 <div className="text-[#322420]">HOT BIDS HAPPENING</div>
                 <FireIcon />
@@ -88,7 +88,7 @@ function HotBidsCard(props: BidsData){
                     <div className="text-base font-semibold text-black">
                         {props.artName}
                     </div>
-                    <div className="italic text-sm text-[#2E2E5A] mb-2">
+                    <div className="italic text-sm text-[#2E2E5A] mb-4">
                         {props.artist}
                     </div>
                 </div>
