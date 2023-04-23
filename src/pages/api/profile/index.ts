@@ -21,7 +21,6 @@ export default async function handler(
           middlename: body.middlename,
           surname: body.surname,
           address: body.address,
-          email: body.email,
           mobile: body.mobile,
         };
         try {
