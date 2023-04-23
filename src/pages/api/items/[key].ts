@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import errorResponse from "~/server/errorResponse";
-import { itemDb } from "~/server/itemUtils";
+import { itemDb } from "~/server/deta";
 // GET item data.
 
 export default async function handler(

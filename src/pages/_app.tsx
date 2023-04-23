@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Layout } from "~/components/Layout";
 
 import "~/styles/globals.css";
+import { ProfileContextProvider } from "~/components/ProfileContextProvider";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,11 +13,16 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <ThemeProvider attribute="class">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <ProfileContextProvider
+        userId={session?.user.id}
+        email={session?.user.email}
+      >
+        <ThemeProvider attribute="class">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </ProfileContextProvider>
     </SessionProvider>
   );
 };

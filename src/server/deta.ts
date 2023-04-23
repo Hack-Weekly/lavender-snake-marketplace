@@ -13,3 +13,7 @@ import { env } from "~/env.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 export const deta = Deta(env.DETA_ACCESS_KEY);
+
+export const itemDb = deta.Base("items");
+export const profileDb = deta.Base("profiles");
+export const orderDb = deta.Base("orders");
