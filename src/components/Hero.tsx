@@ -30,7 +30,7 @@ export default function Hero(){
             <div className={`${poppins.className} font-semibold text-[40px] underline decoration-2 underline-offset-4 text-[#1C1B1F] `}>
                 Today’s Spotlight
             </div>
-            <div className="w-full flex justify-around mt-3">
+            <div className="w-full flex justify-around mt-3 px-4">
                 {
                     spotlightData.map((data: SpotlightData) => {
                         return (
@@ -66,9 +66,9 @@ const spotlightData:Array<SpotlightData> = [
 
 function SpotlightCard(props: SpotlightData){
     return (
-        <div className="w-80 flex flex-col items-center cursor-pointer">
+        <div className="w-72 flex flex-col items-center cursor-pointer">
             <Image 
-            className="w-80 h-44 rounded-2xl"
+            className="w-72 h-44 rounded-2xl"
                 src={props.imageSrc}
                 alt={props.artName}
                 width={500}
