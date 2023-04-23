@@ -11,7 +11,7 @@ const baskervville = Baskervville({
     style: "italic"
 })
 
-interface SpotlightCardProps{
+interface SpotlightData{
     imageSrc: string
     category: string
     artName: string
@@ -32,7 +32,7 @@ export default function Hero(){
             </div>
             <div className="w-full flex justify-around mt-3">
                 {
-                    spotlightData.map((data: SpotlightCardProps) => {
+                    spotlightData.map((data: SpotlightData) => {
                         return (
                             <SpotlightCard key={data.artName} imageSrc={data.imageSrc} category={data.category} artName={data.artName} artist={data.artist} />
                         )
@@ -43,7 +43,7 @@ export default function Hero(){
     )
 }
 
-const spotlightData:Array<SpotlightCardProps> = [
+const spotlightData:Array<SpotlightData> = [
     {
         imageSrc: "/images/birds-of-paradise.png",
         category: "Paintings and Drawings",
@@ -64,7 +64,7 @@ const spotlightData:Array<SpotlightCardProps> = [
     },
 ]
 
-function SpotlightCard(props: SpotlightCardProps){
+function SpotlightCard(props: SpotlightData){
     return (
         <div className="w-80 flex flex-col items-center cursor-pointer">
             <Image 

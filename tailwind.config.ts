@@ -6,12 +6,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryText: "#040322",
-        secondaryText: "#4A4458",
+        "primaryText": "#040322",
+        "secondaryText": "#4A4458",
 
       },
       fontFamily: {
-        playfairDisplay: ["var(--playfair-display)"],
+        "playfairDisplay": ["var(--playfair-display)"],
       }
     },
   },
