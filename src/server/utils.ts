@@ -1,5 +1,3 @@
-import { deta } from "~/server/deta";
-
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 export interface Item {
   name: string;
@@ -8,6 +6,15 @@ export interface Item {
   image: string;
   price: number;
   seller: string;
+}
+
+export interface Profile {
+  firstname: string;
+  middlename?: string;
+  surname: string;
+  address: string;
+  email: string | null;
+  mobile: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,4 +30,15 @@ export function isItem(item: any): item is Item {
   );
 }
 
-export const itemDb = deta.Base("items");
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isProfile(obj: any): obj is Profile {
+  return (
+    typeof obj.firstname === "string" &&
+    (typeof obj.middlename === "string" ||
+      typeof obj.middlename === "undefined") &&
+    typeof obj.surname === "string" &&
+    typeof obj.address === "string" &&
+    (typeof obj.email === "string" || obj.email === null) &&
+    typeof obj.mobile === "string"
+  );
+}
