@@ -13,10 +13,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <ProfileContextProvider
-        userId={session?.user.id}
-        email={session?.user.email}
-      >
+      <ProfileContextProvider userId={session?.user.id}>
         <ThemeProvider attribute="class">
           <Layout>
             <Component {...pageProps} />

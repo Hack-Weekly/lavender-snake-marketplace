@@ -31,7 +31,6 @@ const User = () => {
       <p>{profile.middlename}</p>
       <p>{profile.surname}</p>
       <p>{profile.address}</p>
-      <p>{profile.email}</p>
       <p>{profile.mobile}</p>
     </>
   );

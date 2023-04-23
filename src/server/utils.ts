@@ -13,7 +13,6 @@ export interface Profile {
   middlename?: string;
   surname: string;
   address: string;
-  email: string | null;
   mobile: string;
 }
 
@@ -38,7 +37,6 @@ export function isProfile(obj: any): obj is Profile {
       typeof obj.middlename === "undefined") &&
     typeof obj.surname === "string" &&
     typeof obj.address === "string" &&
-    (typeof obj.email === "string" || obj.email === null) &&
     typeof obj.mobile === "string"
   );
 }

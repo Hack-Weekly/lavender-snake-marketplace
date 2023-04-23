@@ -13,14 +13,12 @@ interface ProfileContextType {
   middlename?: string;
   surname?: string;
   address?: string;
-  email?: string | null;
   mobile?: string;
 }
 
 interface ProfileContextProviderProps {
   children?: ReactNode;
   userId?: string;
-  email?: string | null;
 }
 
 const ProfileContext = createContext<ProfileContextType | null>(null);
@@ -41,7 +39,6 @@ export const ProfileContextProvider: FC<ProfileContextProviderProps> = ({
         if (isSubscribed) {
           if (res.status == 200) {
             const json = (await res.json()) as ProfileContextType;
-            json.email = props.email;
             setProfile(json);
           }
         }
