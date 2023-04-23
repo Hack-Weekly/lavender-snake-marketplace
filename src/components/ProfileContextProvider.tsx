@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import {
   createContext,
   type ReactNode,
@@ -30,7 +29,6 @@ export const ProfileContextProvider: FC<ProfileContextProviderProps> = ({
   children,
   ...props
 }) => {
-  const router = useRouter();
   const [Profile, setProfile] = useState<ProfileContextType | null>(null);
   const [isLoading, setLoading] = useState(true);
 
