@@ -1,4 +1,9 @@
-import { SearchIcon, BookmarkIcon, ShoppingCartIcon, PlusIcon } from "lucide-react";
+import {
+  SearchIcon,
+  BookmarkIcon,
+  ShoppingCartIcon,
+  PlusIcon,
+} from "lucide-react";
 import UserInfo from "./UserInfo";
 
 export default function SiteHeader() {
@@ -64,10 +69,10 @@ function Search() {
 
 function Plus() {
   return (
-  <IconButton> 
-    <PlusIcon />
-  </IconButton>
-  )
+    <IconButton>
+      <PlusIcon />
+    </IconButton>
+  );
 }
 
 function Cart() {
