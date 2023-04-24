@@ -17,7 +17,7 @@ export default function Hero() {
         Explore the beauty of art
       </div>
       <div
-        className={`font-poppins text-[40px] font-semibold text-[#1C1B1F] underline decoration-2 underline-offset-4 `}
+        className={`mb-8 font-poppins text-[40px] font-semibold text-[#1C1B1F] underline decoration-2 underline-offset-4`}
       >
         Today’s Spotlight
       </div>
