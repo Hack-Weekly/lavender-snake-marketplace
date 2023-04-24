@@ -1,4 +1,4 @@
-# { Project Name }
+# { LavenScape }
 
 Lavender Snake's implementation on Marketplace/E-commerce
 

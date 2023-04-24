@@ -2,6 +2,8 @@ import { type GetServerSideProps, type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Hero from "~/components/Hero";
 import { getServerAuthSession } from "~/server/auth";
+import HotBids from "~/components/HotBids";
+import {Playfair_Display} from "next/font/google";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -9,9 +11,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: { session },
   };
 };
-
-import {Playfair_Display} from "next/font/google";
-import HotBids from "~/components/HotBids";
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800"],

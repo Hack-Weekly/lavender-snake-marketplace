@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 function ProjectMeta() {
   return (
     <Head>
-      <title>Project Name</title>
+      <title>LavenScape</title>
       <meta
         name="description"
         content="Fullstack E-commerce app by Lavender Snake"
