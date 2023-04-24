@@ -1,6 +1,7 @@
 import { Poppins, Baskervville } from "next/font/google"
 import Image from "next/image"
 import FireSVG from "./icon/fire.svg";
+import formatter from "./CurrencyFormatter";
 
 interface BidsData{
     imageSrc: string
@@ -72,7 +73,7 @@ const hotBidsData:Array<BidsData> = [
 
 function HotBidsCard(props: BidsData){
     return (
-        <div className="w-[22rem] flex flex-col items-center bg-[#D9D9D9] cursor-pointer rounded-2xl drop-shadow-xl">
+        <div className="w-[22rem] flex flex-col items-center bg-cardBg cursor-pointer rounded-2xl drop-shadow-xl">
             <div>
                 <Image 
                     className="w-[22rem] h-44 rounded-t-2xl object-cover"
@@ -98,7 +99,7 @@ function HotBidsCard(props: BidsData){
                             BIDS:
                         </div>
                         <div>
-                            ${props.bids}
+                            {formatter.format(props.bids)}
                         </div>
                     </div>
                     <div className="flex gap-3">
@@ -106,7 +107,7 @@ function HotBidsCard(props: BidsData){
                             QUICK BUY: 
                         </div>
                         <div>
-                            ${props.quickBuy}
+                            {formatter.format(props.quickBuy)}
                         </div>
                     </div>
                 </div>
