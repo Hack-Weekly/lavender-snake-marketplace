@@ -1,15 +1,4 @@
-import { Poppins, Baskervville } from "next/font/google";
 import Image from "next/image";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: "700",
-});
-const baskervville = Baskervville({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-});
 
 interface SpotlightData {
   imageSrc: string;
@@ -28,7 +17,7 @@ export default function Hero() {
         Explore the beauty of art
       </div>
       <div
-        className={`${poppins.className} text-[40px] font-semibold text-[#1C1B1F] underline decoration-2 underline-offset-4 `}
+        className={`font-poppins text-[40px] font-semibold text-[#1C1B1F] underline decoration-2 underline-offset-4 `}
       >
         Today’s Spotlight
       </div>
@@ -82,12 +71,12 @@ function SpotlightCard(props: SpotlightData) {
         priority
       />
       <div
-        className={`uppercase ${poppins.className} mt-3 text-[15px] font-bold text-secondaryText`}
+        className={`mt-3 font-poppins  text-[15px] font-bold uppercase text-secondaryText`}
       >
         Top 1 in {props.category}
       </div>
       <div className="text-2xl font-bold uppercase ">{props.artName}</div>
-      <div className={`italic ${baskervville.className} mt-1 text-sm`}>
+      <div className={`mt-1 font-baskervville text-sm italic`}>
         {props.artist}
       </div>
     </div>

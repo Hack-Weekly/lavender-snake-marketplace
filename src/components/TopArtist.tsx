@@ -1,4 +1,3 @@
-import { Baskervville, Poppins } from "next/font/google";
 import Image from "next/image";
 import formatter from "./CurrencyFormatter";
 
@@ -10,24 +9,14 @@ interface ArtistSalesData {
   hottestSellImage: string;
 }
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: "700",
-});
-const baskervville = Baskervville({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
 export default function TopArtist() {
   return (
     <div className="flex flex-col items-center px-6 py-8">
-      <div className={`text-[40px] ${poppins.className} mb-3`}>
+      <div className={`mb-3 font-poppins text-[40px]`}>
         Top Artist of the Month
       </div>
       <div
-        className={`flex w-full justify-around ${poppins.className} mb-4 pl-4 text-xl font-bold text-text-grey`}
+        className={`mb-4 flex w-full justify-around pl-4 font-poppins text-xl font-bold text-text-grey`}
       >
         <div>ARTIST</div>
         <div>SOLD</div>
@@ -64,7 +53,7 @@ const artistSalesData: Array<ArtistSalesData> = [
 function ArtistSales(props: ArtistSalesData) {
   return (
     <div className="flex w-full items-center justify-between">
-      <div className={`flex items-center gap-4 ${baskervville.className}`}>
+      <div className={`flex items-center gap-4 font-baskervville`}>
         <Image
           className="h-14 w-14 rounded-xl object-cover"
           src={props.profileImageSrc}
@@ -78,7 +67,7 @@ function ArtistSales(props: ArtistSalesData) {
         {formatter.format(props.sold)}
       </div>
       <div
-        className={`flex flex-col ${baskervville.className} cursor-pointer items-center rounded-xl bg-cardBg shadow-[3.0px_5.0px_4.0px_rgba(0,0,0,0.38)]`}
+        className={`flex cursor-pointer flex-col items-center rounded-xl bg-cardBg font-baskervville shadow-[3.0px_5.0px_4.0px_rgba(0,0,0,0.38)]`}
       >
         <Image
           className="h-24 w-52 rounded-t-xl object-cover"

@@ -19,7 +19,6 @@ const Home: NextPage = () => {
     <main
       className={`min-h-screen bg-white font-playfairDisplay text-primaryText`}
     >
-      <div className="font-poppins">Test</div>
       {/* <h1>Welcome to Homepage: {session?.user.name || "Stranger"}!</h1> */}
       <Hero />
       <HotBids />
