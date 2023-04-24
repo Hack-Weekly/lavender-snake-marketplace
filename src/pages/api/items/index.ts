@@ -22,7 +22,7 @@ export default async function handler(
           description: body.description,
           image: body.image,
           price: body.price,
-          seller: body.seller,
+          seller: session.user.id,
         };
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
