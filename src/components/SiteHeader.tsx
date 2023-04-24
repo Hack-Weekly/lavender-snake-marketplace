@@ -1,4 +1,9 @@
-import { SearchIcon, BookmarkIcon, ShoppingCartIcon, PlusIcon } from "lucide-react";
+import {
+  SearchIcon,
+  BookmarkIcon,
+  ShoppingCartIcon,
+  PlusIcon,
+} from "lucide-react";
 import UserInfo from "./UserInfo";
 
 export default function SiteHeader() {
@@ -17,7 +22,7 @@ function Logo() {
       <div className="h-16 w-16">
         <img src="/lavender-snake.png" alt="lavender snake logo" />
       </div>
-      <h1 className="via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text text-4xl font-extrabold text-transparent">
+      <h1 className="via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text font-poppins text-4xl font-extrabold text-transparent">
         LavenScape
       </h1>
     </div>
@@ -64,10 +69,10 @@ function Search() {
 
 function Plus() {
   return (
-  <IconButton> 
-    <PlusIcon />
-  </IconButton>
-  )
+    <IconButton>
+      <PlusIcon />
+    </IconButton>
+  );
 }
 
 function Cart() {
