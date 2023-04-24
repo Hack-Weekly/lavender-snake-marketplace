@@ -112,16 +112,3 @@ export default function TopTrending() {
     </div>
   );
 } 
-
-function TrendingCard(category: []) {
-  return (
-    <div>
-      <Image 
-        src={}
-        width={250}
-        height={250}
-        priority
-      />
-    </div>
-  );
-}
