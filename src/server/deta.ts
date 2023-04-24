@@ -17,3 +17,4 @@ export const deta = Deta(env.DETA_ACCESS_KEY);
 export const itemDb = deta.Base("items");
 export const profileDb = deta.Base("profiles");
 export const orderDb = deta.Base("orders");
+export const userDb = deta.Base("users");
