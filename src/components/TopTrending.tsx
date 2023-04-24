@@ -112,3 +112,16 @@ export default function TopTrending() {
     </div>
   );
 } 
+
+function TrendingCard(): TrendingCardData {
+  return (
+    <div>
+      <Image 
+        src={"/image/birds-of-paradise.png"}
+        width={250}
+        height={250}
+        priority
+      />
+    </div>
+  );
+}
