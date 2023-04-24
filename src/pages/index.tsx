@@ -4,6 +4,7 @@ import Hero from "~/components/Hero";
 import { getServerAuthSession } from "~/server/auth";
 import HotBids from "~/components/HotBids";
 import {Playfair_Display} from "next/font/google";
+import TopArtist from "~/components/TopArtist";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
       {/* <h1>Welcome to Homepage: {session?.user.name || "Stranger"}!</h1> */}
       <Hero />
       <HotBids />
+      <TopArtist />
     </main>
   );
 };
