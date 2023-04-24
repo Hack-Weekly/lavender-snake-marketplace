@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    min-h-dscreen {
+        min-height: 100vh; /* Fallback if dvh is not supported. */
+        min-height: 100dvh;
+    }
+}
