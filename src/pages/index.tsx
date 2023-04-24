@@ -1,7 +1,8 @@
-import { type GetServerSideProps, type NextPage } from "next";
+// import { type GetServerSideProps, type NextPage } from "next";
+import { type NextPage } from "next";
 // import { useSession } from "next-auth/react";
 import Hero from "~/components/Hero";
-import { getServerAuthSession } from "~/server/auth";
+// import { getServerAuthSession } from "~/server/auth";
 import HotBids from "~/components/HotBids";
 import TopArtist from "~/components/TopArtist";
 
