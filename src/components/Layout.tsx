@@ -1,10 +1,32 @@
 import Head from "next/head";
 import SiteFooter from "~/components/SiteFooter";
 import SiteHeader from "~/components/SiteHeader";
+import { Playfair_Display, Poppins, Baskervville } from "next/font/google";
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--playfair-display",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--poppins",
+});
+
+const baskervville = Baskervville({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--baskervville",
+});
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div
+      className={`${playfair.variable} ${poppins.variable} ${baskervville.variable}`}
+    >
       <ProjectMeta />
 
       <SiteHeader />
@@ -12,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {children}
 
       <SiteFooter />
-    </>
+    </div>
   );
 }
 

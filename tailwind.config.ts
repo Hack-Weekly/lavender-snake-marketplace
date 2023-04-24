@@ -14,6 +14,8 @@ export default {
       },
       fontFamily: {
         playfairDisplay: ["var(--playfair-display)"],
+        poppins: ["var(--poppins)"],
+        baskervville: ["var(--baskervville)"],
       },
     },
   },
