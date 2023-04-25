@@ -6,6 +6,8 @@ export interface Item {
   image: string;
   price: number;
   seller: string;
+  isUnique: boolean;
+  amount: number;
 }
 
 export interface Profile {
@@ -25,7 +27,9 @@ export function isItem(item: any): item is Item {
     typeof item.description === "string" &&
     typeof item.image === "string" &&
     typeof item.price === "number" &&
-    typeof item.seller === "string"
+    typeof item.seller === "string" &&
+    typeof item.isUnique === "boolean" &&
+    typeof item.amount === "number"
   );
 }
 

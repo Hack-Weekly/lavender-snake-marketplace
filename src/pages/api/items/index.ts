@@ -23,6 +23,8 @@ export default async function handler(
           image: body.image,
           price: body.price,
           seller: session.user.id,
+          isUnique: body.isUnique,
+          amount: body.amount,
         };
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
