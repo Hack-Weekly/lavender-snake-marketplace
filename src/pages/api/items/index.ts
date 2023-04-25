@@ -21,10 +21,10 @@ export default async function handler(
           artist: body.artist,
           description: body.description,
           image: body.image,
-          price: body.price,
+          price: body.amount >= 0 ? body.amount : 1,
           seller: session.user.id,
           isUnique: body.isUnique,
-          amount: body.amount,
+          amount: body.amount >= 0 ? body.amount : 1,
         };
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
