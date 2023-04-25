@@ -9,6 +9,51 @@ type TrendingCardData = {
   quickBuy: number,
 };
 
+export default function TopTrending() {
+  return (
+    <div className="bg-indigoBg flex ">
+
+      {/* paintings category */}
+      {paintingData.map((data, index) => (
+        <TrendingCard 
+          key={index}
+          imageSrc={data.imageSrc}
+          title={data.title}
+          author={data.author}
+          bids={data.bids}
+          quickBuy={data.quickBuy}
+        />
+      ))}
+
+      {/* abstract art category */}
+      {abstractArtData.map((data, index) => (
+        <TrendingCard 
+          key={index}
+          imageSrc={data.imageSrc}
+          title={data.title}
+          author={data.author}
+          bids={data.bids}
+          quickBuy={data.quickBuy}
+        />
+      ))}
+
+      {/* digital art category */}
+      {digitalArtData.map((data, index) => (
+        <TrendingCard 
+          key={index}
+          imageSrc={data.imageSrc}
+          title={data.title}
+          author={data.author}
+          bids={data.bids}
+          quickBuy={data.quickBuy}
+        />
+      ))}
+
+    </div>
+  );
+} 
+
+
 // Categories
 const paintingData: Array<TrendingCardData> = [
   {
@@ -104,20 +149,12 @@ const digitalArtData: Array<TrendingCardData> = [
 ];
 
 
-
-export default function TopTrending() {
-  return (
-    <div className="bg-indigoBg h-9">
-
-    </div>
-  );
-} 
-
-function TrendingCard(): TrendingCardData {
+function TrendingCard(props: TrendingCardData) {
   return (
     <div>
       <Image 
-        src={"/image/birds-of-paradise.png"}
+        src={props.imageSrc}
+        alt={props.title}
         width={250}
         height={250}
         priority
@@ -125,3 +162,15 @@ function TrendingCard(): TrendingCardData {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
