@@ -151,7 +151,7 @@ const digitalArtData: Array<TrendingCardData> = [
 
 function TrendingCard(props: TrendingCardData) {
   return (
-    <div>
+    <div className="bg-cardBg">
       <Image 
         src={props.imageSrc}
         alt={props.title}
@@ -159,6 +159,14 @@ function TrendingCard(props: TrendingCardData) {
         height={250}
         priority
       />
+      <div>        
+        <h1>{props.title}</h1>
+        <h2>{props.author}</h2>
+      </div>
+      <div className="flex">
+        <p className="font-poppins text-text-grey">BIDS: {props.bids}</p>
+        <p className="font-poppins text-text-grey">QUICK BUY: {props.quickBuy}</p>
+      </div>
     </div>
   );
 }
