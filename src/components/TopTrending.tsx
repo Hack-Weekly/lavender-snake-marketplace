@@ -14,10 +14,10 @@ type TrendingCardData = {
 
 export default function TopTrending() {
   return (
-    <div className="bg-indigoBg flex flex-col gap-6 p-8">
+    <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
       <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Abstract Art</h1>
-      <div className="flex gap-7 justify-center items-center">
+      <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* abstract art category */}
         {abstractArtData.map((data, index) => (
@@ -34,7 +34,7 @@ export default function TopTrending() {
       </div>
 
       <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Paintings and Drawings</h1>
-      <div className="flex gap-7 justify-center items-center">
+      <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* paintings category */}
         {paintingData.map((data, index) => (
@@ -51,7 +51,7 @@ export default function TopTrending() {
       </div>
 
       <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Digital Art</h1>
-      <div className="flex gap-7 justify-center items-center">
+      <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* digital art category */}
         {digitalArtData.map((data, index) => (
@@ -73,9 +73,9 @@ export default function TopTrending() {
 
 function TrendingCard(props: TrendingCardData) {
   return (
-    <div className="bg-cardBg flex flex-col items-center rounded-2xl w-72 drop-shadow-md cursor-pointer">
+    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer">
       <Image 
-        className="h-32 w-full rounded-t-2xl object-cover"
+        className="h-40 w-[18rem] rounded-t-2xl object-cover"
         src={props.imageSrc}
         alt={props.title}
         width={500}
@@ -83,20 +83,20 @@ function TrendingCard(props: TrendingCardData) {
         priority
       />
 
-      <div className="flex flex-col w-full px-5 py-3">
+      <div className="flex flex-col px-4 py-2">
 
         <div className="font-baskervville mb-4">        
           <h1 className="font-bold text-base">{props.title}</h1>
           <h2 className="font-light text-[#2E2E5A] text-sm italic">{props.author}</h2>
         </div>
 
-        <div className="flex gap-4 justify-between flex-shrink-0 text-xs font-poppins font-semibold">
+        <div className="flex gap-3 justify-between text-xs font-poppins font-semibold">
           <div className="flex gap-2">
-            <p className="text-text-grey">BIDS: </p>
+            <p className="text-text-grey">BIDS:</p>
             <p>{formatter.format(props.bids)}</p>
           </div>
           <div className="flex gap-2">
-            <p className="text-text-grey">QUICK BUY: </p>
+            <p className="text-text-grey">QUICK BUY:</p>
             <p>{formatter.format(props.quickBuy)}</p>
           </div>
         </div>
@@ -206,8 +206,8 @@ const digitalArtData: Array<TrendingCardData> = [
 function ArrowLeft() {
   return (
     <IconButton>
-      <div className="bg-cardBg rounded-full p-3">
-          <ChevronLeft className="text-indigoBg h-7 w-7"/>
+      <div className="bg-cardBg rounded-full p-1">
+          <ChevronLeft className="text-indigoBg h-9 w-9"/>
       </div>
     </IconButton>
   );
@@ -216,8 +216,8 @@ function ArrowLeft() {
 function ArrowRight() {
   return (
     <IconButton>
-      <div className="bg-cardBg rounded-full p-3">
-          <ChevronRight className="text-indigoBg h-7 w-7"/>
+      <div className="bg-cardBg rounded-full p-1">
+          <ChevronRight className="text-indigoBg h-9 w-9"/>
       </div>
     </IconButton>
   );
