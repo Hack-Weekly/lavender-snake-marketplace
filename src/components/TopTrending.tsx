@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { IconButton } from "./SiteHeader";
+import formatter from "./CurrencyFormatter";
 
 
 type TrendingCardData = {
@@ -13,10 +14,10 @@ type TrendingCardData = {
 
 export default function TopTrending() {
   return (
-    <div className="bg-indigoBg flex flex-col gap-6 p-6">
+    <div className="bg-indigoBg flex flex-col gap-6 p-8">
 
-      <h1 className="font-poppins text-yellowText">Top Trending in Abstract Art</h1>
-      <div className="flex gap-7">
+      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Abstract Art</h1>
+      <div className="flex gap-7 justify-center items-center">
         <ArrowLeft />
         {/* abstract art category */}
         {abstractArtData.map((data, index) => (
@@ -27,13 +28,13 @@ export default function TopTrending() {
             author={data.author}
             bids={data.bids}
             quickBuy={data.quickBuy}
-            />
-            ))}
+          />
+        ))}
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText">Top Trending in Paintings and Drawings</h1>
-      <div className="flex gap-7">
+      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Paintings and Drawings</h1>
+      <div className="flex gap-7 justify-center items-center">
         <ArrowLeft />
         {/* paintings category */}
         {paintingData.map((data, index) => (
@@ -45,12 +46,12 @@ export default function TopTrending() {
             bids={data.bids}
             quickBuy={data.quickBuy}
           />
-          ))}
+        ))}
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText">Top Trending in Digital Art</h1>
-      <div className="flex gap-7">
+      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Digital Art</h1>
+      <div className="flex gap-7 justify-center items-center">
         <ArrowLeft />
         {/* digital art category */}
         {digitalArtData.map((data, index) => (
@@ -70,18 +71,55 @@ export default function TopTrending() {
   );
 } 
 
+function TrendingCard(props: TrendingCardData) {
+  return (
+    <div className="bg-cardBg flex flex-col items-center rounded-2xl w-72 drop-shadow-md cursor-pointer">
+      <Image 
+        className="h-32 w-full rounded-t-2xl object-cover"
+        src={props.imageSrc}
+        alt={props.title}
+        width={500}
+        height={500}
+        priority
+      />
+
+      <div className="flex flex-col w-full px-5 py-3">
+
+        <div className="font-baskervville mb-4">        
+          <h1 className="font-bold text-base">{props.title}</h1>
+          <h2 className="font-light text-[#2E2E5A] text-sm italic">{props.author}</h2>
+        </div>
+
+        <div className="flex gap-4 justify-between flex-shrink-0 text-xs">
+          <div className="flex gap-2">
+            <p className="font-poppins text-text-grey">BIDS: </p>
+            <p>{formatter.format(props.bids)}</p>
+          </div>
+          <div className="flex gap-2">
+            <p className="font-poppins text-text-grey">QUICK BUY: </p>
+            <p>{formatter.format(props.quickBuy)}</p>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  );
+}
+
 
 // Categories
+
 const paintingData: Array<TrendingCardData> = [
   {
-    imageSrc: "/images/chilly-day.png",
+    imageSrc: "/images/chilly-day.jpg",
     title: "Chilly Day",
     author: "Mike Seraph",
     bids: 830,
     quickBuy: 14787,
   },
   {
-    imageSrc: "/images/euphoria.png",
+    imageSrc: "/images/euphoria.jpg",
     title: "Euphoria",
     author: "Ej Kim",
     bids: 457823,
@@ -95,7 +133,7 @@ const paintingData: Array<TrendingCardData> = [
     quickBuy: 100564,
   },
   {
-    imageSrc: "/images/monotone.png",
+    imageSrc: "/images/monotone.jpg",
     title: "Monotone",
     author: "MonoRepo",
     bids: 100,
@@ -164,43 +202,6 @@ const digitalArtData: Array<TrendingCardData> = [
     quickBuy: 190789,
   },
 ];
-
-
-function TrendingCard(props: TrendingCardData) {
-  return (
-    <div className="bg-cardBg pb-7 rounded-2xl w-[22rem] shadow-md">
-      <Image 
-        className="h-32 w-[22rem] rounded-t-2xl object-cover"
-        src={props.imageSrc}
-        alt={props.title}
-        width={500}
-        height={500}
-        priority
-      />
-
-      <div className="flex flex-col">
-
-        <div className="font-baskervville ">        
-          <h1 className="font-bold">{props.title}</h1>
-          <h2 className="font-light">{props.author}</h2>
-        </div>
-
-        <div className="flex gap-4">
-          <div className="flex gap-2">
-            <p className="font-poppins text-text-grey">BIDS: </p>
-            <p>{props.bids}</p>
-          </div>
-          <div className="flex gap-2">
-            <p className="font-poppins text-text-grey">QUICK BUY: </p>
-            <p>{props.bids}</p>
-          </div>
-        </div>
-
-      </div>
-      
-    </div>
-  );
-}
 
 function ArrowLeft() {
   return (
