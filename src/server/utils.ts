@@ -10,6 +10,7 @@ export interface Item {
   price: number;
   isUnique: boolean;
   amount: number;
+  category: string;
 }
 
 export interface Profile {
@@ -36,7 +37,8 @@ export function isItem(item: any): item is Item {
     typeof item.image === "string" &&
     typeof item.price === "number" &&
     typeof item.isUnique === "boolean" &&
-    typeof item.amount === "number"
+    typeof item.amount === "number" &&
+    typeof item.category === "string"
   );
 }
 

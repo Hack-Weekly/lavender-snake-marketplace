@@ -25,6 +25,7 @@ export default async function handler(
           seller: session.user.id,
           isUnique: body.isUnique,
           amount: body.amount >= 0 ? body.amount : 1,
+          category: body.category,
         };
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
