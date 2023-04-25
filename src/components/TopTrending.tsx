@@ -90,13 +90,13 @@ function TrendingCard(props: TrendingCardData) {
           <h2 className="font-light text-[#2E2E5A] text-sm italic">{props.author}</h2>
         </div>
 
-        <div className="flex gap-4 justify-between flex-shrink-0 text-xs">
+        <div className="flex gap-4 justify-between flex-shrink-0 text-xs font-poppins font-semibold">
           <div className="flex gap-2">
-            <p className="font-poppins text-text-grey">BIDS: </p>
+            <p className="text-text-grey">BIDS: </p>
             <p>{formatter.format(props.bids)}</p>
           </div>
           <div className="flex gap-2">
-            <p className="font-poppins text-text-grey">QUICK BUY: </p>
+            <p className="text-text-grey">QUICK BUY: </p>
             <p>{formatter.format(props.quickBuy)}</p>
           </div>
         </div>
