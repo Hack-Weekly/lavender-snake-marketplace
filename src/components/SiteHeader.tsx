@@ -92,6 +92,6 @@ function Bookmark() {
 }
 
 // Wrap this around any icon to make it a button
-function IconButton({ children }: { children: React.ReactNode }) {
+export function IconButton({ children }: { children: React.ReactNode }) {
   return <button className="text-violet-200">{children}</button>;
 }
