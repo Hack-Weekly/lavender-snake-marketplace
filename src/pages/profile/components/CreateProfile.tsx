@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function SignUp() {
+export default function CreateProfile() {
     return (
         <div className="flex items-center justify-between">
             <div className="w-full lg:w-[50%] p-6 flex flex-col items-center">
@@ -32,7 +32,7 @@ export default function SignUp() {
                         <textarea name="address" id="address" rows={3} className="w-80 bg-grey px-2 py-1 font-semibold resize-none" ></textarea>
                     </div>
                     <button 
-                        className="p-2 mt-2 mx-10 bg-primaryText text-white rounded-md"
+                        className="p-2 mt-2 mx-10 bg-primaryText text-white hover:bg-altBrand rounded-md"
                     >
                         Create Profile
                     </button>

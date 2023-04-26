@@ -2,7 +2,8 @@ import { getServerAuthSession } from "~/server/auth";
 import { type GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 import { useProfile } from "~/components/ProfileContextProvider";
-import SignUp from "./components/SignUp";
+import CreateProfile from "./components/CreateProfile";
+import Login from "./components/Login";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -15,10 +16,10 @@ const User = () => {
   const { data: session } = useSession();
   const profile = useProfile();
   if (!session) {
-    return <div>Unauthorized</div>;
+    return <Login />;
   }
   if (!profile) {
-    return <SignUp />;
+    return <CreateProfile />;
   }
   return (
     <>
