@@ -8,24 +8,25 @@ type Item = {
   image: string;
   price: number;
   seller: string;
-  isUnique: boolean;
-  amount: number;
+  isUnique?: boolean;
+  amount?: number;
 };
 
-export default function ArtItem() {
+export default function ArtDetailsPage() {
   const router = useRouter();
   const { slug } = router.query;
   const [item, setItem] = useState<Item | null>(null);
-
+  
   useEffect(() => {
-    const getItem = async () => {
+    const getArtData = async () => {
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       const res = await fetch(`/api/items/${slug}`);
-      const data = await res.json();
+      const data: Item  = await res.json();
       setItem(data);
     };
     if (slug) {
-      getItem();
+       getArtData()
+        .catch(console.error);
     }
   }, [slug]);
 
@@ -40,6 +41,7 @@ export default function ArtItem() {
       <img src={item.image} alt={item.name} />
       <p>DESCRIPTION: {item.description}</p>
       <p>QUICK BUY: {item.price}</p>
+      <p>LATEST BIDS:</p>
     </div>
   );
 }

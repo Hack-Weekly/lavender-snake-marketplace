@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { IconButton } from "./SiteHeader";
 import formatter from "./CurrencyFormatter";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 type TrendingCardData = {
@@ -14,6 +15,10 @@ type TrendingCardData = {
 };
 
 export default function TopTrending() {
+  // check if this is needed lol
+  const router = useRouter();
+  const { slug } = router.query;
+
   return (
     <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
@@ -22,7 +27,8 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* abstract art category */}
         {abstractArtData.map((data, index) => (
-          <Link href={`/art/:slug`} key={index}>
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          <Link href={`/art/${slug}`} key={index}>
             <TrendingCard 
               key={index}
               imageSrc={data.imageSrc}
@@ -41,7 +47,8 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* paintings category */}
         {paintingData.map((data, index) => (
-          <Link href={`/art/:slug`} key={index}>
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          <Link href={`/art/${slug}`} key={index}>
             <TrendingCard 
               key={index}
               imageSrc={data.imageSrc}
@@ -60,7 +67,8 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* digital art category */}
         {digitalArtData.map((data, index) => (
-          <Link href={`/art/:slug`} key={index}>
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          <Link href={`/art/${slug}`} key={index}>
           <TrendingCard 
             key={index}
             imageSrc={data.imageSrc}
