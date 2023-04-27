@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { IconButton } from "./SiteHeader";
 import formatter from "./CurrencyFormatter";
+import Link from "next/link";
 
 
 type TrendingCardData = {
@@ -21,14 +22,16 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* abstract art category */}
         {abstractArtData.map((data, index) => (
-          <TrendingCard 
-            key={index}
-            imageSrc={data.imageSrc}
-            title={data.title}
-            author={data.author}
-            bids={data.bids}
-            quickBuy={data.quickBuy}
-          />
+          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
+            <TrendingCard 
+              key={index}
+              imageSrc={data.imageSrc}
+              title={data.title}
+              author={data.author}
+              bids={data.bids}
+              quickBuy={data.quickBuy}
+              />
+          </Link>
         ))}
         <ArrowRight />
       </div>
@@ -38,14 +41,16 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* paintings category */}
         {paintingData.map((data, index) => (
-          <TrendingCard 
-            key={index}
-            imageSrc={data.imageSrc}
-            title={data.title}
-            author={data.author}
-            bids={data.bids}
-            quickBuy={data.quickBuy}
-          />
+          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
+            <TrendingCard 
+              key={index}
+              imageSrc={data.imageSrc}
+              title={data.title}
+              author={data.author}
+              bids={data.bids}
+              quickBuy={data.quickBuy}
+              />
+          </Link>
         ))}
         <ArrowRight />
       </div>
@@ -55,6 +60,7 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* digital art category */}
         {digitalArtData.map((data, index) => (
+          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
           <TrendingCard 
             key={index}
             imageSrc={data.imageSrc}
@@ -62,7 +68,8 @@ export default function TopTrending() {
             author={data.author}
             bids={data.bids}
             quickBuy={data.quickBuy}
-          />
+            />
+          </Link>
         ))}
         <ArrowRight />
       </div>

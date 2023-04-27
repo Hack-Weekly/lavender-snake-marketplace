@@ -5,7 +5,7 @@
 // page routes - can use useRouter hook from nextjs then just do router.push()
 // see usage: https://nextjs.org/docs/api-reference/next/router 
 /**
- * create wrapper button that takes in an onClick prop that specifys the router endpoint to navigate to
+ * create wrapper button that takes in an onClick prop that specifies the router endpoint to navigate to
  * like this:
 
 import { useRouter } from 'next/router'
@@ -27,17 +27,7 @@ export default function Page() {
 export default function ArtDetails() {
   return (
     <div>
-      col 1
-      image
-      description
-
-      col 2
-      title
-      author
-      category
-      3 buttons
-      latest bid system
-        - fetch the lastest bid by user and their bid price and time
+      
     </div>   
   );
 }

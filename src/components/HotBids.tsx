@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FireSVG from "./icon/fire.svg";
 import formatter from "./CurrencyFormatter";
+import Link from "next/link";
 
 interface BidsData {
   imageSrc: string;
@@ -23,6 +24,7 @@ export default function HotBids() {
       <div className="flex w-full flex-row justify-around ">
         {hotBidsData.map((data, index) => {
           return (
+            <Link href={`/art/${encodeURIComponent(data.artName)}`} key={index}>
             <HotBidsCard
               key={index}
               imageSrc={data.imageSrc}
@@ -30,7 +32,8 @@ export default function HotBids() {
               artist={data.artist}
               bids={data.bids}
               quickBuy={data.quickBuy}
-            />
+              />
+            </Link>
           );
         })}
       </div>

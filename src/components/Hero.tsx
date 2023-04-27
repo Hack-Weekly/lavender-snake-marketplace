@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface SpotlightData {
   imageSrc: string;
@@ -24,13 +25,15 @@ export default function Hero() {
       <div className="mt-3 flex w-full justify-around px-4">
         {spotlightData.map((data: SpotlightData) => {
           return (
+            <Link href={`/art/${encodeURIComponent(data.artName)}`} key={data.artName}>
             <SpotlightCard
               key={data.artName}
               imageSrc={data.imageSrc}
               category={data.category}
               artName={data.artName}
               artist={data.artist}
-            />
+              />
+            </Link>
           );
         })}
       </div>
