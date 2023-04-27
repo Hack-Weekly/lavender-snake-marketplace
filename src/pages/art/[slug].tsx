@@ -1,41 +1,46 @@
-import { useEffect, useState, } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 type Item = {
-  name?: string,
-  artist?: string,
-  description?: string,
-  image?: string,
-  price?: number,
-  seller?: string,
-}
+  name: string;
+  artist: string;
+  description: string;
+  image: string;
+  price: number;
+  seller: string;
+  isUnique: boolean;
+  amount: number;
+};
 
-type ItemDetailsProps = {
-  key?: string,
-}
-
-// Fetch art details given their specific key
-export default function ItemDetails({ key }: ItemDetailsProps) {
-  const [item, setItem] = useState<Item | null>(null);
+export default function ArtItem() {
   const router = useRouter();
+  const { slug } = router.query;
+  const [item, setItem] = useState<Item | null>(null);
 
   useEffect(() => {
-    async function fetchItemData() {
-      const res = await fetch(`/api/items/${key}`);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const itemsData: Item = await res.json();
-      setItem(itemsData);
+    const getItem = async () => {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      const res = await fetch(`/api/items/${slug}`);
+      const data = await res.json();
+      setItem(data);
+    };
+    if (slug) {
+      getItem();
     }
+  }, [slug]);
 
-    fetchItemData()
-      .catch(console.error)
-  }, [key]);
+  if (!item) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <h1>{item?.name}</h1>
-      <img src={item?.image} alt={item?.name} />
-    </div>   
+      <h1>{item.name}</h1>
+      <h1>{item.seller}</h1>
+      <img src={item.image} alt={item.name} />
+      <p>DESCRIPTION: {item.description}</p>
+      <p>QUICK BUY: {item.price}</p>
+    </div>
   );
 }
 
