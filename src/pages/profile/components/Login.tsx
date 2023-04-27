@@ -19,6 +19,7 @@ export default function Login(){
                 width={600}
                 height={500}
                 className="w-10/12 md:w-8/12 lg:w-5/12 h-80 object-cover mt-6 sepia-[0.5] rounded"
+                priority
             />
         </div>
     )
