@@ -22,7 +22,7 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* abstract art category */}
         {abstractArtData.map((data, index) => (
-          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
+          <Link href={`/art/items/${encodeURIComponent(data.slug)}`} key={index}>
             <TrendingCard 
               key={index}
               imageSrc={data.imageSrc}
@@ -41,7 +41,7 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* paintings category */}
         {paintingData.map((data, index) => (
-          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
+          <Link href={`/art/items/${encodeURIComponent(data.slug)}`} key={index}>
             <TrendingCard 
               key={index}
               imageSrc={data.imageSrc}
@@ -60,7 +60,7 @@ export default function TopTrending() {
         <ArrowLeft />
         {/* digital art category */}
         {digitalArtData.map((data, index) => (
-          <Link href={`/art/${encodeURIComponent(data.title)}`} key={index}>
+          <Link href={`/art/items/${encodeURIComponent(data.slug)}`} key={index}>
           <TrendingCard 
             key={index}
             imageSrc={data.imageSrc}
