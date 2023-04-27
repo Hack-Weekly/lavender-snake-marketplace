@@ -5,6 +5,7 @@ import {
   PlusIcon,
 } from "lucide-react";
 import UserInfo from "./UserInfo";
+import Link from "next/link";
 
 export default function SiteHeader() {
   return (
@@ -18,14 +19,14 @@ export default function SiteHeader() {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-4">
+    <Link href="/" className="flex items-center gap-4">
       <div className="h-16 w-16">
         <img src="/lavender-snake.png" alt="lavender snake logo" />
       </div>
       <h1 className="via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text font-poppins text-4xl font-extrabold text-transparent">
         LavenScape
       </h1>
-    </div>
+    </Link>
   );
 }
 

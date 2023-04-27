@@ -13,6 +13,8 @@ export default {
         geraldineBg: "#F2B8B5",
         cardBg: "#D9D9D9",
         indigoBg: "#121132",
+        grey: "#E6E6FA",
+        altBrand: "#233760",
       },
       fontFamily: {
         playfairDisplay: ["var(--playfair-display)"],

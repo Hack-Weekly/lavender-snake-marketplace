@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: "700",
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--poppins",
 });
 
@@ -25,13 +25,15 @@ const baskervville = Baskervville({
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className={`${playfair.variable} ${poppins.variable} ${baskervville.variable}`}
+      className={`${playfair.variable} ${poppins.variable} ${baskervville.variable} bg-white text-primaryText`}
     >
       <ProjectMeta />
 
       <SiteHeader />
 
-      {children}
+      <div className="min-h-[calc(100dvh-12.5rem)]">
+        {children}
+      </div>
 
       <SiteFooter />
     </div>
