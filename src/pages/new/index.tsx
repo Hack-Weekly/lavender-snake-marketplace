@@ -20,33 +20,49 @@ export default function NewArt(){
     const profile = useProfile();
     let fullName = "";
     if(profile){
-        if(profile.middlename){
-            fullName = profile.middlename;
+        if(profile.firstname && profile.middlename && profile.surname){
+            fullName = profile.firstname + " " + profile.middlename + " " + profile.surname;
+        }else if(profile.firstname && profile.surname){
+            fullName = profile.firstname + " " + profile.surname;            
         }
-        if(profile.firstname && profile.surname){
-            fullName = `${profile.firstname} + " " + ${fullName} + " " + ${profile.surname}`;
-        }
-    }
-
-    const [imagePreview,setImagePreview] = useState<File | null>(null);
-    function handleImageChange(e: React.ChangeEvent<HTMLInputElement>){
-        if(e.target.files != null && e.target.files[0]){
-            setImagePreview(e.target.files[0]);
-        }else{setImagePreview(null)}
-        console.log(imagePreview);
-        
     }
 
     const [newArtData, setNewArtData] = useState({
         name: "",
-        artist: fullName,
+        artist: "",
         description: "",
         image: "",
         price: "1",
-        seller: fullName,
+        seller: session?.user.id,
         isUnique: true,
         amount: 1,
     });
+
+    const [imagePreview,setImagePreview] = useState<File | null>(null);
+    function handleImageChange(e: React.ChangeEvent<HTMLInputElement>){
+        if(e.target.files != null && e.target.files[0]){
+            const file = e.target.files[0];
+            
+            const reader = new FileReader();
+            reader.onloadend = function(){
+                setImagePreview(file);
+                //image is of type string, avoiding null value here
+                const data = reader.result || "";
+                console.log(data);
+
+                //update input data, and check for arraybuffer type
+                if(typeof data === "string"){
+                    setNewArtData((prevValue) => {
+                        return({
+                            ...prevValue,
+                            image: data,
+                        })
+                    })
+                }
+            }
+            reader.readAsDataURL(file);            
+        }else{setImagePreview(null)}
+    }
 
     function handleArtInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >){
         
@@ -86,7 +102,29 @@ export default function NewArt(){
         }
     }
 
-    // const [imageSrc, setImageSrc] = useState<File | null>(null);
+    const submitNewArt = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const submitData = {
+            name: newArtData.name,
+            artist: fullName,
+            description: newArtData.description,
+            image: newArtData.image,
+            price: Number(newArtData.price),
+            seller: newArtData.seller,
+            isUnique: newArtData.isUnique,
+            amount: newArtData.amount,
+        }
+        console.log(submitData);
+        const response = await fetch("api/items", {
+            method: "POST",
+            body: JSON.stringify(submitData),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        console.log(response);
+        
+    }
 
 
     if (!session) {
@@ -115,7 +153,13 @@ export default function NewArt(){
                         Sell your masterpiece
                     </div>
                 </div>
-                <form action="" method="post" className="flex mt-6 font-poppins">
+                <form 
+                    action="" 
+                    method="post" 
+                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    onSubmit={submitNewArt} 
+                    className="flex mt-6 font-poppins"
+                >
                     <div className="w-6/12 flex flex-col items-center px-6">
                         <div className="font-bold text-xl mb-4">
                             UPLOAD YOUR ART
@@ -126,6 +170,7 @@ export default function NewArt(){
                             id="image" 
                             accept="image/png, image/jpeg" 
                             className="bg-grey px-2 py-1 text-sm cursor-pointer" 
+                            required
                             onChange={handleImageChange} 
                         />
                         <div className="mt-6 w-[25rem] h-[17rem] bg-cardBg rounded-md flex items-center justify-center">
@@ -153,6 +198,7 @@ export default function NewArt(){
                                     id="name"
                                     autoComplete="off"
                                     className="w-96 bg-grey px-2 py-1 rounded-sm"
+                                    required
                                     value={newArtData.name}
                                     onChange={handleArtInputChange}
                                 />
@@ -164,6 +210,7 @@ export default function NewArt(){
                                     id="description" 
                                     rows={3} 
                                     className="w-96 bg-grey px-2 py-1 resize-none" 
+                                    required
                                     value={newArtData.description}
                                     onChange={handleArtInputChange}
                                 ></textarea>
@@ -176,6 +223,7 @@ export default function NewArt(){
                                     id="price"
                                     autoComplete="off"
                                     className="w-52 bg-grey px-2 py-1 rounded-sm"
+                                    required
                                     value={newArtData.price}
                                     onChange={handleArtInputChange}
                                 />
@@ -206,6 +254,7 @@ export default function NewArt(){
                                     onChange={handleArtInputChange}
                                 />
                             </div>
+                            <button type="submit" className="w-52 py-2 bg-altBrand rounded mt-4 text-white">Submit</button>
                         </div>
                     </div>
                 </form>
