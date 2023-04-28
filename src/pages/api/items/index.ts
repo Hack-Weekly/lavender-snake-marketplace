@@ -21,7 +21,7 @@ export default async function handler(
           artist: body.artist,
           description: body.description,
           image: body.image,
-          price: body.amount >= 0 ? body.amount : 1,
+          price: body.price >= 0 ? body.price : 1,
           seller: session.user.id,
           isUnique: body.isUnique,
           amount: body.amount >= 0 ? body.amount : 1,
