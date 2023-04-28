@@ -3,9 +3,23 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 export interface Item {
+  id: string;
   name: string;
   artist: string;
   description: string;
+  imageName: string;
+  price: number;
+  isUnique: boolean;
+  amount: number;
+}
+
+//has image extra, which is not part of item db
+export interface NewItem {
+  id: string;
+  name: string;
+  artist: string;
+  description: string;
+  imageName: string;
   image: string;
   price: number;
   isUnique: boolean;
@@ -26,13 +40,15 @@ export interface Order {
   datetime: Date;
 }
 
+//has extra check for image which isn't part of items, rather stored in arts drive
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isItem(item: any): item is Item {
+export function isItem(item: any): item is NewItem {
   return (
     typeof item === "object" &&
     typeof item.name === "string" &&
     typeof item.artist === "string" &&
     typeof item.description === "string" &&
+    typeof item.imageName === "string" &&
     typeof item.image === "string" &&
     typeof item.price === "number" &&
     typeof item.isUnique === "boolean" &&

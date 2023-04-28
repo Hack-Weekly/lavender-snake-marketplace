@@ -7,6 +7,8 @@ import Login from "~/components/Login";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -18,6 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 export default function NewArt(){
     const { data: session } = useSession();
     const profile = useProfile();
+    const router = useRouter();
     let fullName = "";
     if(profile){
         if(profile.firstname && profile.middlename && profile.surname){
@@ -31,6 +34,7 @@ export default function NewArt(){
         name: "",
         artist: "",
         description: "",
+        imageName: "",
         image: "",
         price: "1",
         seller: session?.user.id,
@@ -42,19 +46,24 @@ export default function NewArt(){
     function handleImageChange(e: React.ChangeEvent<HTMLInputElement>){
         if(e.target.files != null && e.target.files[0]){
             const file = e.target.files[0];
+            const id = uuidv4();
+            const imageFormat = file.name.split('.').pop();
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            const newImageName = `${id}.${imageFormat}`;            
+            
             
             const reader = new FileReader();
             reader.onloadend = function(){
                 setImagePreview(file);
                 //image is of type string, avoiding null value here
                 const data = reader.result || "";
-                console.log(data);
 
                 //update input data, and check for arraybuffer type
                 if(typeof data === "string"){
                     setNewArtData((prevValue) => {
                         return({
                             ...prevValue,
+                            imageName: newImageName,
                             image: data,
                         })
                     })
@@ -105,16 +114,11 @@ export default function NewArt(){
     const submitNewArt = async (e: React.FormEvent) => {
         e.preventDefault();
         const submitData = {
-            name: newArtData.name,
+            ...newArtData,
+            id: uuidv4(),
             artist: fullName,
-            description: newArtData.description,
-            image: newArtData.image,
             price: Number(newArtData.price),
-            seller: newArtData.seller,
-            isUnique: newArtData.isUnique,
-            amount: newArtData.amount,
         }
-        console.log(submitData);
         const response = await fetch("api/items", {
             method: "POST",
             body: JSON.stringify(submitData),
@@ -123,6 +127,10 @@ export default function NewArt(){
             }
         })
         console.log(response);
+
+        if(response.status === 200){
+            void router.push("/art/" + submitData.id);
+        }
         
     }
 

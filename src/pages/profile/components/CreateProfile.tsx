@@ -24,7 +24,7 @@ export default function CreateProfile() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();        
+        e.preventDefault();
         
         if((profileData.firstname != "") && (profileData.surname != "") && (profileData.mobile != "") && (profileData.address != "")){
             await fetch("api/profile", {
@@ -35,7 +35,6 @@ export default function CreateProfile() {
                 },
             })
         }
-
     }
 
 
@@ -95,9 +94,3 @@ export default function CreateProfile() {
         </div>
     );
 }
-
-// firstname: body.firstname,
-// middlename: body.middlename,
-// surname: body.surname,
-// address: body.address,
-// mobile: body.mobile,
