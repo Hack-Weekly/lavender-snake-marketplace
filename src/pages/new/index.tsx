@@ -26,13 +26,18 @@ export default function NewArt(){
         if(profile.firstname && profile.middlename && profile.surname){
             fullName = profile.firstname + " " + profile.middlename + " " + profile.surname;
         }else if(profile.firstname && profile.surname){
-            fullName = profile.firstname + " " + profile.surname;            
+            fullName = profile.firstname + " " + profile.surname;
+        }else if(profile.firstname && profile.middlename){
+            fullName = profile.firstname + " " + profile.middlename;
+        }else if(profile.firstname){
+            fullName = profile.firstname;
         }
     }
 
     const [newArtData, setNewArtData] = useState({
         name: "",
         artist: "",
+        category: "abstract-art",
         description: "",
         imageName: "",
         image: "",
@@ -73,7 +78,7 @@ export default function NewArt(){
         }else{setImagePreview(null)}
     }
 
-    function handleArtInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >){
+    function handleArtInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement >){
         
         if(e.target.name === "isUnique"){
             const newIsUniqueValue = !newArtData.isUnique;
@@ -210,6 +215,26 @@ export default function NewArt(){
                                     value={newArtData.name}
                                     onChange={handleArtInputChange}
                                 />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="category" className="text-xl">Select Category</label>
+                                <select name="category" id="category" required className="w-96 bg-grey px-2 py-1 rounded-sm cursor-pointer" value={newArtData.category} onChange={handleArtInputChange}>
+                                    <option value="abstract-art">Abstract Art</option>
+                                    <option value="paintings-and-drawings">Paintings and Drawings</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="digital-art">Digital Art</option>
+                                    <option value="photography">Photography</option>
+                                </select>
+                                {/* <input 
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    autoComplete="off"
+                                    className="w-96 bg-grey px-2 py-1 rounded-sm"
+                                    
+                                    value={newArtData.name}
+                                    
+                                /> */}
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="description" className="text-xl rounded-sm">Description</label>
