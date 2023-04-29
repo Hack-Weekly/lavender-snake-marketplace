@@ -17,7 +17,7 @@ export default function Hero() {
         Explore the beauty of art
       </div>
       <div
-        className={`mb-8 font-poppins text-[40px] font-semibold text-[#1C1B1F] underline decoration-2 underline-offset-4`}
+        className="mb-8 font-poppins text-[40px] font-bold text-[#1C1B1F] underline decoration-2 underline-offset-4"
       >
         Today’s Spotlight
       </div>
@@ -71,12 +71,12 @@ function SpotlightCard(props: SpotlightData) {
         priority
       />
       <div
-        className={`mt-3 font-poppins  text-[15px] font-bold uppercase text-secondaryText`}
+        className="mt-3 font-poppins text-[15px] font-bold uppercase text-secondaryText"
       >
         Top 1 in {props.category}
       </div>
       <div className="text-2xl font-bold uppercase ">{props.artName}</div>
-      <div className={`mt-1 font-baskervville text-sm italic`}>
+      <div className="mt-1 font-baskervville text-sm font-semibold italic text-secondaryText">
         {props.artist}
       </div>
     </div>
