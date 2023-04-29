@@ -5,6 +5,7 @@
 export interface Item {
   id: string;
   name: string;
+  category: string;
   artist: string;
   description: string;
   imageName: string;
@@ -17,6 +18,7 @@ export interface Item {
 export interface NewItem {
   id: string;
   name: string;
+  category: string;
   artist: string;
   description: string;
   imageName: string;
@@ -46,6 +48,7 @@ export function isItem(item: any): item is NewItem {
   return (
     typeof item === "object" &&
     typeof item.name === "string" &&
+    typeof item.category === "string" &&
     typeof item.artist === "string" &&
     typeof item.description === "string" &&
     typeof item.imageName === "string" &&

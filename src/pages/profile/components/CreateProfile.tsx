@@ -55,7 +55,7 @@ export default function CreateProfile() {
                 >
                     <div className="flex flex-col gap-1">
                         <label htmlFor="firstname" className="text-xl font-bold">First name</label>
-                        <input type="text" name="firstname" id="firstname" className="w-80 bg-grey px-2 py-1 font-semibold" onChange={handleProfileData} />
+                        <input type="text" name="firstname" id="firstname" className="w-80 bg-grey px-2 py-1 font-semibold" required onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="middlename" className="text-xl font-bold">Middle name</label>
@@ -67,11 +67,11 @@ export default function CreateProfile() {
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="mobile" className="text-xl font-bold">mobile</label>
-                        <input type="text" name="mobile" id="mobile" className="w-80 bg-grey px-2 py-1 font-semibold" onChange={handleProfileData} />
+                        <input type="text" name="mobile" id="mobile" className="w-80 bg-grey px-2 py-1 font-semibold" required onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="address" className="text-xl font-bold">Address</label>
-                        <textarea name="address" id="address" rows={3} className="w-80 bg-grey px-2 py-1 font-semibold resize-none" onChange={handleProfileData} ></textarea>
+                        <textarea name="address" id="address" rows={3} className="w-80 bg-grey px-2 py-1 font-semibold resize-none" required onChange={handleProfileData} ></textarea>
                     </div>
                     <button 
                         type="submit"

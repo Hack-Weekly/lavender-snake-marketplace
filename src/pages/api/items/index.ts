@@ -29,6 +29,7 @@ export default async function handler(
         const data = {
           id: body.id,
           name: body.name,
+          category: body.category,
           artist: body.artist,
           description: body.description,
           imageName: body.imageName,
