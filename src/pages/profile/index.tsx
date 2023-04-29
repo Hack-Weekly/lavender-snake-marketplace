@@ -3,7 +3,7 @@ import { type GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 import { useProfile } from "~/components/ProfileContextProvider";
 import CreateProfile from "./components/CreateProfile";
-import Login from "./components/Login";
+import Login from "../../components/Login";
 import Image from "next/image";
 import { Pencil } from "lucide-react";
 

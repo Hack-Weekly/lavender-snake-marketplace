@@ -71,7 +71,9 @@ function Search() {
 function Plus() {
   return (
     <IconButton>
-      <PlusIcon />
+      <Link href="/new">
+        <PlusIcon />
+      </Link>
     </IconButton>
   );
 }

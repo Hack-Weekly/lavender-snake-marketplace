@@ -1,10 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import errorResponse from "~/server/errorResponse";
 import { isItem } from "~/server/utils";
-import { itemDb } from "~/server/deta";
+import { imageDrive, itemDb } from "~/server/deta";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "~/server/auth";
+
+export const config = {
+  api: {
+      bodyParser: {
+          sizeLimit: '2.5mb',
+      }
+  }
+}
+
 // POST a new item.
+
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,18 +27,24 @@ export default async function handler(
     if (session) {
       if (isItem(body)) {
         const data = {
+          id: body.id,
           name: body.name,
           artist: body.artist,
           description: body.description,
-          image: body.image,
-          price: body.amount >= 0 ? body.amount : 1,
+          imageName: body.imageName,
+          price: body.price >= 0 ? body.price : 1,
           seller: session.user.id,
           isUnique: body.isUnique,
           amount: body.amount >= 0 ? body.amount : 1,
         };
+
+        const imageName:string = body.imageName;
+        const image:string = body.image;
+        
         try {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-          const item = await itemDb.put(data);
+          await imageDrive.put(imageName, {data: image});
+          const item = await itemDb.put(data, data.id);
           res.status(200).json(item);
         } catch (error) {
           res.status(500).json({ error: error });
