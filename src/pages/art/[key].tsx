@@ -49,8 +49,6 @@ export default function ArtDetailsPage() {
     return <div>Loading...</div>;
   }
 
-
-
   return (
     <div className="flex gap-7 p-11 justify-center">
       <div className="flex flex-col ">
@@ -108,6 +106,7 @@ export default function ArtDetailsPage() {
           </button>
         </div>
 
+        {/* Data fetch Bids here, for now just mock data */}
         <div className="bg-indigoBg font-poppins rounded-lg p-7">
           <p className="font-bold text-3xl text-yellowText">LATEST BIDS:</p>
           <div className="flex justify-evenly m-3">
