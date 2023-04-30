@@ -7,7 +7,7 @@ type Item = {
   name?: string;
   artist?: string;
   description?: string;
-  imageName?: string;
+  imageName: string;
   image?: string;
   price?: number;
   seller?: string | undefined;
@@ -19,7 +19,7 @@ export default function ArtDetailsPage() {
   const router = useRouter();
   const { key } = router.query;
   const [item, setItem] = useState<Item | null>(null);
-  // const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<string | null | Blob>(null);
   
   useEffect(() => {
     const getArtData = async () => {
@@ -27,13 +27,14 @@ export default function ArtDetailsPage() {
       // const res = await fetch(`/api/items/${key}`);
 
       // mock data
-      const res = await fetch(`/api/items/8s1w77vx1xjj`);
+      const res = await fetch(`/api/items/31d125e4-e173-4d02-a85b-c2aef3e7d300`);
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const data: Item  = await res.json();
       setItem(data);
 
-      // const imageFromDeta = await imageDrive.get(item?.imageName) 
-      // setImage(imageFromDeta);
+      const imageFromDeta = await imageDrive.get(item?.imageName ?? "");
+
+      setImage(imageFromDeta);
     };
     if (key) {
        getArtData()
@@ -51,11 +52,12 @@ export default function ArtDetailsPage() {
     <div className="flex gap-7">
       <div className="flex flex-col ">
         {/* TODO: fetch the image seperately from deta drive using the image file name */}
-        <img 
+        {/* <img 
           src={item.imageName || item.image} 
           alt={item.name} 
           className="border-2 border-black rounded-xl "
-        />
+        /> */}
+        {image ?? <img src={image ?? ""} alt="image here" /> }
         <div>
         <p className="font-poppins font-semibold">DESCRIPTION:</p>
         {item.description}
