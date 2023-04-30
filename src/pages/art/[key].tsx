@@ -57,7 +57,8 @@ export default function ArtDetailsPage() {
           alt={item.name} 
           className="border-2 border-black rounded-xl "
         /> */}
-        {image ?? <img src={image ?? ""} alt="image here" /> }
+        {/* {image ?? <img src={image ?? ""} alt="image here" /> } */}
+        <img src={image ?? ""} alt="image name here" />
         <div>
         <p className="font-poppins font-semibold">DESCRIPTION:</p>
         {item.description}
