@@ -22,6 +22,9 @@ export default {
         poppins: ["var(--poppins)"],
         baskervville: ["var(--baskervville)"],
       },
+      screens: {
+				xs: "480px",
+			},
     },
   },
   plugins: [],
