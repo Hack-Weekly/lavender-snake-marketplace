@@ -10,8 +10,7 @@ import { Edit } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { profileDataT, sessionDataT } from "./utils";
-import { Item } from "~/server/utils";
-import Link from "next/link";
+import type { Item } from "~/server/utils";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -52,6 +51,7 @@ const UserProfileFn = (props: {sessionData: sessionDataT, profileData: profileDa
 
   useEffect(() => {
     void getSellingItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const userId = props.sessionData.userId;
