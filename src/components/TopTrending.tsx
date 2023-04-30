@@ -24,7 +24,7 @@ export default function TopTrending() {
   return (
     <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
-      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Abstract Art</h1>
+      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Abstract Art</h1>
       <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* abstract art category */}
@@ -43,7 +43,7 @@ export default function TopTrending() {
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Paintings and Drawings</h1>
+      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Paintings and Drawings</h1>
       <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* paintings category */}
@@ -62,7 +62,7 @@ export default function TopTrending() {
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText text-2xl">Top Trending in Digital Art</h1>
+      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Digital Art</h1>
       <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* digital art category */}
@@ -104,7 +104,7 @@ function TrendingCard(props: TrendingCardData) {
           <h2 className="font-light text-[#2E2E5A] text-sm italic">{props.author}</h2>
         </div>
 
-        <div className="flex gap-3 justify-between text-xs font-poppins font-semibold">
+        <div className="flex gap-3 justify-between text-xs font-poppins font-bold">
           <div className="flex gap-2">
             <p className="text-text-grey">BIDS:</p>
             <p>{formatter.format(props.bids)}</p>

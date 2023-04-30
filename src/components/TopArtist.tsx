@@ -12,7 +12,7 @@ interface ArtistSalesData {
 export default function TopArtist() {
   return (
     <div className="flex flex-col items-center px-6 py-8">
-      <div className={`mb-6 font-poppins text-[40px]`}>
+      <div className="mb-6 font-poppins text-[40px] font-bold">
         Top Artist of the Month
       </div>
       <div className="flex w-full flex-col px-20">
@@ -46,7 +46,7 @@ const artistSalesData: Array<ArtistSalesData> = [
 function ArtistSales(props: ArtistSalesData) {
   return (
     <div className="flex w-full justify-between">
-      <div className={`flex flex-col items-center`}>
+      <div className="flex flex-col items-center">
         <div className="mb-11 flex w-full justify-around pl-4 font-poppins text-xl font-bold text-text-grey">
           ARTIST
         </div>

@@ -5,6 +5,7 @@
 export interface Item {
   id: string;
   name: string;
+  category: string;
   artist: string;
   description: string;
   imageName: string;
@@ -17,6 +18,7 @@ export interface Item {
 export interface NewItem {
   id: string;
   name: string;
+  category: string;
   artist: string;
   description: string;
   imageName: string;
@@ -46,6 +48,7 @@ export function isItem(item: any): item is NewItem {
   return (
     typeof item === "object" &&
     typeof item.name === "string" &&
+    typeof item.category === "string" &&
     typeof item.artist === "string" &&
     typeof item.description === "string" &&
     typeof item.imageName === "string" &&
@@ -76,4 +79,20 @@ export function isOrder(obj: any): obj is Order {
     obj.datetime instanceof Date &&
     !isNaN(obj.datetime.getTime())
   );
+}
+
+
+export interface sessionDataT {
+  userName: string | undefined | null
+  email: string | undefined | null
+  image: string | undefined | null
+  userId: string
+}
+
+export interface profileDataT {
+  firstName: string | undefined
+  middleName: string | undefined
+  surName: string | undefined
+  address: string | undefined
+  mobile: string | undefined
 }

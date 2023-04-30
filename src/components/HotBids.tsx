@@ -15,7 +15,7 @@ export default function HotBids() {
   return (
     <div className="flex flex-col items-center bg-geraldineBg px-6 py-10">
       <div
-        className={`mb-6 flex flex-row gap-2 font-poppins text-4xl font-bold`}
+        className="mb-6 flex flex-row gap-2 font-poppins text-4xl font-bold"
       >
         <FireIcon />
         <div className="text-[#322420]">HOT BIDS HAPPENING</div>
@@ -87,7 +87,7 @@ function HotBidsCard(props: BidsData) {
             {props.artist}
           </div>
         </div>
-        <div className={`flex flex-row justify-between font-poppins text-xs`}>
+        <div className="flex flex-row justify-between font-poppins font-bold text-xs">
           <div className="flex gap-3">
             <div className="text-text-grey">BIDS:</div>
             <div>{formatter.format(props.bids)}</div>
