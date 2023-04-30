@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function CreateProfile() {
@@ -10,6 +11,7 @@ export default function CreateProfile() {
         mobile: "",
         address: "",
     });
+    const router = useRouter();
 
     const handleProfileData = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const name = e.target.name;
@@ -27,13 +29,16 @@ export default function CreateProfile() {
         e.preventDefault();
         
         if((profileData.firstname != "") && (profileData.surname != "") && (profileData.mobile != "") && (profileData.address != "")){
-            await fetch("api/profile", {
+            const response = await fetch("api/profile", {
                 method: "POST",
                 body: JSON.stringify(profileData),
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
+            if(response.status === 200){
+                void router.push("/profile");
+            }
         }
     }
 
