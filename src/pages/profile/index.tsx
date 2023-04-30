@@ -9,7 +9,7 @@ import { Pencil } from "lucide-react";
 import { Edit } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { profileDataT, sessionDataT } from "./utils";
+import type { profileDataT, sessionDataT } from "../../server/utils";
 import type { Item } from "~/server/utils";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
