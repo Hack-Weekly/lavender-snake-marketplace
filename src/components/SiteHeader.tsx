@@ -11,7 +11,7 @@ export default function SiteHeader() {
   return (
     <header className="flex h-20 items-center bg-slate-950 px-4 py-2">
       <Logo />
-      <div className="mx-12 h-9 w-[1px] bg-violet-200" />
+      <div className="hidden lg:block mx-12 h-9 w-[1px] bg-violet-200" />
       <Nav />
     </header>
   );
@@ -23,7 +23,7 @@ function Logo() {
       <div className="h-16 w-16">
         <img src="/lavender-snake.png" alt="lavender snake logo" />
       </div>
-      <h1 className="via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text font-poppins text-4xl font-extrabold text-transparent">
+      <h1 className="hidden sm:block via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text font-poppins text-4xl font-extrabold text-transparent">
         LavenScape
       </h1>
     </Link>
@@ -32,9 +32,9 @@ function Logo() {
 
 function Nav() {
   return (
-    <div className="mr-4 flex flex-1 items-center justify-between">
+    <div className="md:mr-4 flex flex-1 items-center justify-between">
       <Search />
-      <div className="flex gap-6">
+      <div className="flex gap-3 sm:gap-4 md:gap-6 ml-auto">
         <Plus />
         <Cart />
         <Bookmark />
@@ -46,7 +46,7 @@ function Nav() {
 
 function Search() {
   return (
-    <div className="relative w-80">
+    <div className="hidden lg:block relative w-80">
       <label htmlFor="searchBox" className="sr-only">
         Search for an art piece
       </label>

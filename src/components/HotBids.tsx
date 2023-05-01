@@ -13,15 +13,15 @@ interface BidsData {
 
 export default function HotBids() {
   return (
-    <div className="flex flex-col items-center bg-geraldineBg px-6 py-10">
+    <div className="flex flex-col items-center bg-geraldineBg px-6 py-6 sm:py-8 lg:py-10">
       <div
-        className="mb-6 flex flex-row gap-2 font-poppins text-4xl font-bold"
+        className="mb-4 xs:mb-6 mx-auto flex flex-row items-center gap-2 font-poppins text-xl xs:text-3xl lg:text-4xl font-bold"
       >
         <FireIcon />
-        <div className="text-[#322420]">HOT BIDS HAPPENING</div>
+        <div className="text-[#322420] text-center">HOT BIDS HAPPENING</div>
         <FireIcon />
       </div>
-      <div className="flex w-full flex-row justify-around ">
+      <div className="flex w-full flex-col lg:flex-row items-center justify-around gap-4">
         {hotBidsData.map((data, index) => {
           return (
             <Link href={`/art/${encodeURIComponent(data.artName)}`} key={index}>
@@ -67,10 +67,10 @@ const hotBidsData: Array<BidsData> = [
 
 function HotBidsCard(props: BidsData) {
   return (
-    <div className="flex w-[22rem] cursor-pointer flex-col items-center rounded-2xl bg-cardBg drop-shadow-xl">
+    <div className="flex w-[20rem] xs:w-[24rem] lg:w-[22rem] cursor-pointer flex-col items-center rounded-2xl bg-cardBg drop-shadow-xl">
       <div>
         <Image
-          className="h-44 w-[22rem] rounded-t-2xl object-cover"
+          className="h-44 w-[20rem] xs:w-[24rem] lg:w-[22rem] rounded-t-2xl object-cover"
           src={props.imageSrc}
           alt={props.artName}
           width={500}

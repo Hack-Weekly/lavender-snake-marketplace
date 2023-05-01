@@ -11,11 +11,11 @@ interface ArtistSalesData {
 
 export default function TopArtist() {
   return (
-    <div className="flex flex-col items-center px-6 py-8">
-      <div className="mb-6 font-poppins text-[40px] font-bold">
+    <div className="flex flex-col items-center px-3 xs:px-6 py-8">
+      <div className="mb-6 font-poppins text-2xl xs:text-3xl md:text-4xl lg:text-[40px] font-bold">
         Top Artist of the Month
       </div>
-      <div className="flex w-full flex-col px-20">
+      <div className="flex w-full flex-col md:px-10 lg:px-20">
         {artistSalesData.map((data, index) => {
           return (
             <ArtistSales
@@ -45,45 +45,45 @@ const artistSalesData: Array<ArtistSalesData> = [
 
 function ArtistSales(props: ArtistSalesData) {
   return (
-    <div className="flex w-full justify-between">
+    <div className="flex w-full justify-between gap-2 ">
       <div className="flex flex-col items-center">
-        <div className="mb-11 flex w-full justify-around pl-4 font-poppins text-xl font-bold text-text-grey">
+        <div className="mb-6 md:mb-11 flex justify-center w-full font-poppins text-sm xs:text-base md:text-xl font-bold text-text-grey">
           ARTIST
         </div>
-        <div className="flex flex-row items-center gap-4 font-baskervville">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 font-baskervville">
           <Image
-            className="h-14 w-14 rounded-xl object-cover"
+            className="h-12 xs:h-14 w-12 xs:w-14 rounded-xl object-cover"
             src={props.profileImageSrc}
             alt="artist profile image"
             width={64}
             height={64}
           />
-          <div className="text-2xl italic">{props.artist}</div>
+          <div className="text-lg xs:text-xl lg:text-2xl text-center italic">{props.artist}</div>
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mb-11 flex w-full justify-around pl-4 font-poppins text-xl font-bold text-text-grey">
+        <div className="mb-11 flex w-full justify-center font-poppins text-sm xs:text-base md:text-xl font-bold text-text-grey">
           SOLD
         </div>
-        <div className="text-center text-4xl font-semibold">
+        <div className="text-center text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-semibold">
           {formatter.format(props.sold)}
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mb-4 flex w-full justify-around pl-4 font-poppins text-xl font-bold text-text-grey">
+        <div className="mb-4 flex w-full justify-center font-poppins text-sm xs:text-base md:text-xl font-bold text-text-grey">
           HOTTEST SELL
         </div>
         <div
           className={`flex cursor-pointer flex-col items-center rounded-xl bg-cardBg font-baskervville shadow-[3.0px_5.0px_4.0px_rgba(0,0,0,0.38)]`}
         >
           <Image
-            className="h-24 w-52 rounded-t-xl object-cover"
+            className="h-20 xs:h-24 w-40 xs:w-48 sm:w-52 rounded-t-xl object-cover"
             src={props.hottestSellImage}
             alt={props.hottestSell}
             width={200}
             height={150}
           />
-          <div className="p-1">{props.hottestSell}</div>
+          <div className="p-1 text-sm xs:text-base">{props.hottestSell}</div>
         </div>
       </div>
     </div>

@@ -10,19 +10,19 @@ interface SpotlightData {
 
 export default function Hero() {
   return (
-    <div className="flex flex-col items-center p-6">
-      <div className="text-[60px] font-bold">
+    <div className="flex flex-col items-center p-6 pt-4 xs:pt-6">
+      <div className="text-2xl xs:text-[1.7rem] sm:text-4xl min-[800px]:text-5xl lg:text-6xl text-center font-bold">
         A New World of Creativity Awaits
       </div>
-      <div className="my-3 text-lg font-bold italic text-[#2E2E5A]">
+      <div className="my-2 xs:my-3 text-lg font-bold italic text-[#2E2E5A]">
         Explore the beauty of art
       </div>
       <div
-        className="mb-8 font-poppins text-[40px] font-bold text-[#1C1B1F] underline decoration-2 underline-offset-4"
+        className="mt-2 mb-4 md:mb-8 font-poppins text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#1C1B1F] text-center underline decoration-2 underline-offset-4"
       >
         Today’s Spotlight
       </div>
-      <div className="mt-3 flex w-full justify-around px-4">
+      <div className="mt-3 flex flex-col min-[900px]:flex-row gap-4 w-full items-center justify-between lg:justify-around px-4">
         {spotlightData.map((data: SpotlightData) => {
           return (
             <Link href={`/art/${encodeURIComponent(data.artName)}`} key={data.artName}>
@@ -64,9 +64,9 @@ const spotlightData: Array<SpotlightData> = [
 
 function SpotlightCard(props: SpotlightData) {
   return (
-    <div className="flex w-72 cursor-pointer flex-col items-center">
+    <div className="flex w-72 xs:w-80 min-[900px]:w-64 lg:w-72 cursor-pointer flex-col items-center">
       <Image
-        className="h-44 w-72 rounded-2xl"
+        className="h-44 w-72 xs:w-80 min-[900px]:w-64 lg:w-72 rounded-2xl"
         src={props.imageSrc}
         alt={props.artName}
         width={500}
@@ -74,7 +74,7 @@ function SpotlightCard(props: SpotlightData) {
         priority
       />
       <div
-        className="mt-3 font-poppins text-[15px] font-bold uppercase text-secondaryText"
+        className="mt-3 font-poppins text-sm lg:text-[15px] font-bold uppercase text-secondaryText"
       >
         Top 1 in {props.category}
       </div>
