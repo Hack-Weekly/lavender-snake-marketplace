@@ -26,9 +26,7 @@ export default function TopTrending() {
 
   useEffect(() => {    
     window.addEventListener("resize", () => {
-      scrollAmountRef.current = Math.round(window.innerWidth * 0.6);
-      console.log(scrollAmountRef.current);
-      
+      scrollAmountRef.current = Math.round(window.innerWidth * 0.6);      
     })
   }, [])
 

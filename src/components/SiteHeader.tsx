@@ -81,7 +81,12 @@ function Plus() {
 function Cart() {
   return (
     <IconButton>
-      <ShoppingCartIcon />
+      <div className="relative">
+        <ShoppingCartIcon />
+        <div className="absolute w-full -top-[0.65rem] text-[#ad4392] text-sm font-bold">
+          2
+        </div>
+      </div>
     </IconButton>
   );
 }
