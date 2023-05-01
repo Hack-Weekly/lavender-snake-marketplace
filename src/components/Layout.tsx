@@ -31,7 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <SiteHeader />
 
-      <div className="min-h-[calc(100dvh-12.5rem)]">
+      <div className="min-h-[calc(100dvh-11rem)] xs:min-h-[calc(100dvh-12.5rem)]">
         {children}
       </div>
 

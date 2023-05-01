@@ -5,6 +5,7 @@ import { IconButton } from "./SiteHeader";
 import formatter from "./CurrencyFormatter";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 
 
 type TrendingCardData = {
@@ -21,58 +22,83 @@ export default function TopTrending() {
   const router = useRouter();
   const { key } = router.query;
 
+  const scrollAmountRef = useRef(window.innerWidth * 0.6);
+
+  useEffect(() => {    
+    window.addEventListener("resize", () => {
+      scrollAmountRef.current = Math.round(window.innerWidth * 0.6);
+      console.log(scrollAmountRef.current);
+      
+    })
+  }, [])
+
+  const scrollHorizontal = (sectionId: string, toRight: boolean) => {    
+    toRight && document.getElementById(sectionId)?.scrollBy(scrollAmountRef.current,0);
+    !toRight && document.getElementById(sectionId)?.scrollBy(-scrollAmountRef.current,0);
+  }
+
   return (
     <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
       <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Abstract Art</h2>
       <div className="flex w-full justify-center items-center gap-5">
-        <ArrowLeft />
+        <div onClick={() => scrollHorizontal("abstract", false)}>
+          <ArrowLeft />
+        </div>
         {/* abstract art category */}
-        <div className="flex items-center gap-5 overflow-x-auto">
+        <div id="abstract" className="flex items-center gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none">
           {abstractArtData.map((data, index) => (
-              <Link href={`/art/${key}`} key={index}>
-              <TrendingCard 
-                key={index}
-                imageSrc={data.imageSrc}
-                title={data.title}
-                author={data.author}
-                bids={data.bids}
-                quickBuy={data.quickBuy}
+              <Link href={`/art/${key}`} key={index} className="snap-start">
+                <TrendingCard 
+                  key={index}
+                  imageSrc={data.imageSrc}
+                  title={data.title}
+                  author={data.author}
+                  bids={data.bids}
+                  quickBuy={data.quickBuy}
                 />
             </Link>
           ))}
         </div>
-        <ArrowRight />
+        <div onClick={() => scrollHorizontal("abstract", true)}>
+          <ArrowRight />
+        </div>
       </div>
 
       <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Paintings and Drawings</h2>
       <div className="flex w-full justify-center items-center gap-5">
-        <ArrowLeft />
+        <div onClick={() => scrollHorizontal("paintings", false)}>
+          <ArrowLeft />
+        </div>
         {/* paintings category */}
-        <div className="flex items-center gap-5 overflow-x-auto">
+        <div id="paintings" className="flex items-center gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none">
           {paintingData.map((data, index) => (
-              <Link href={`/art/${key}`} key={index}>
-              <TrendingCard 
-                key={index}
-                imageSrc={data.imageSrc}
-                title={data.title}
-                author={data.author}
-                bids={data.bids}
-                quickBuy={data.quickBuy}
+              <Link href={`/art/${key}`} key={index} className="snap-start">
+                <TrendingCard 
+                  key={index}
+                  imageSrc={data.imageSrc}
+                  title={data.title}
+                  author={data.author}
+                  bids={data.bids}
+                  quickBuy={data.quickBuy}
                 />
             </Link>
           ))}
         </div>
-        <ArrowRight />
+        <div onClick={() => scrollHorizontal("paintings", true)}>
+          <ArrowRight />
+        </div>
       </div>
 
       <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Digital Art</h2>
       <div className="flex justify-center items-center gap-5">
-        <ArrowLeft />
+        <div onClick={() => scrollHorizontal("digital", false)}>
+          <ArrowLeft />
+        </div>
         {/* digital art category */}
-        <div className="flex items-center gap-5 overflow-x-auto">
+        <div id="digital" className="flex items-center gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none">
           {digitalArtData.map((data, index) => (
-            <Link href={`/art/${key}`} key={index}>
+            <Link href={`/art/${key}`} key={index} className="snap-start">
               <TrendingCard 
                 key={index}
                 imageSrc={data.imageSrc}
@@ -84,7 +110,9 @@ export default function TopTrending() {
             </Link>
           ))}
         </div>
-        <ArrowRight />
+        <div onClick={() => scrollHorizontal("digital", true)}>
+          <ArrowRight />
+        </div>
       </div>
 
     </div>
@@ -131,6 +159,62 @@ function TrendingCard(props: TrendingCardData) {
 // Categories
 
 const paintingData: Array<TrendingCardData> = [
+  {
+    imageSrc: "/images/chilly-day.jpg",
+    title: "Chilly Day",
+    author: "Mike Seraph",
+    bids: 830,
+    quickBuy: 14787,
+  },
+  {
+    imageSrc: "/images/euphoria.jpg",
+    title: "Euphoria",
+    author: "Ej Kim",
+    bids: 457823,
+    quickBuy: 777123,
+  },
+  {
+    imageSrc: "/images/grand-scheme.png",
+    title: "Grand Scheme",
+    author: "ClearMinds",
+    bids: 98000,
+    quickBuy: 100564,
+  },
+  {
+    imageSrc: "/images/monotone.jpg",
+    title: "Monotone",
+    author: "MonoRepo",
+    bids: 100,
+    quickBuy: 9000,
+  },
+  {
+    imageSrc: "/images/chilly-day.jpg",
+    title: "Chilly Day",
+    author: "Mike Seraph",
+    bids: 830,
+    quickBuy: 14787,
+  },
+  {
+    imageSrc: "/images/euphoria.jpg",
+    title: "Euphoria",
+    author: "Ej Kim",
+    bids: 457823,
+    quickBuy: 777123,
+  },
+  {
+    imageSrc: "/images/grand-scheme.png",
+    title: "Grand Scheme",
+    author: "ClearMinds",
+    bids: 98000,
+    quickBuy: 100564,
+  },
+  {
+    imageSrc: "/images/monotone.jpg",
+    title: "Monotone",
+    author: "MonoRepo",
+    bids: 100,
+    quickBuy: 9000,
+  },
   {
     imageSrc: "/images/chilly-day.jpg",
     title: "Chilly Day",

@@ -46,9 +46,9 @@ export default function CreateProfile() {
     return (
         <div className="flex items-center justify-between">
             <div className="w-full lg:w-[50%] p-6 flex flex-col items-center">
-                <div className="ml-10 font-playfairDisplay">
-                    <div className="text-4xl font-bold">Create new profile</div>
-                    <div className="ml-24 text-2xl font-semibold">
+                <div className="xs:ml-10 font-playfairDisplay">
+                    <div className="text-3xl xs:text-4xl font-bold">Create new profile</div>
+                    <div className="ml-20 xs:ml-24 text-xl xs:text-2xl font-semibold">
                         a new world awaits you...
                     </div>
                 </div>
@@ -59,34 +59,34 @@ export default function CreateProfile() {
                     onSubmit={handleSubmit}
                 >
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="firstname" className="text-xl font-bold">First name</label>
+                        <label htmlFor="firstname" className="text-lg xs:text-xl font-bold">First name</label>
                         <input type="text" name="firstname" id="firstname" className="w-80 bg-grey px-2 py-1 font-semibold" required onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="middlename" className="text-xl font-bold">Middle name</label>
+                        <label htmlFor="middlename" className="text-lg xs:text-xl font-bold">Middle name</label>
                         <input type="text" name="middlename" id="middlename" className="w-80 bg-grey px-2 py-1 font-semibold" onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="surname" className="text-xl font-bold">Last name</label>
+                        <label htmlFor="surname" className="text-lg xs:text-xl font-bold">Last name</label>
                         <input type="text" name="surname" id="surname" className="w-80 bg-grey px-2 py-1 font-semibold" onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="mobile" className="text-xl font-bold">mobile</label>
+                        <label htmlFor="mobile" className="text-lg xs:text-xl font-bold">mobile</label>
                         <input type="text" name="mobile" id="mobile" className="w-80 bg-grey px-2 py-1 font-semibold" required onChange={handleProfileData} />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="address" className="text-xl font-bold">Address</label>
+                        <label htmlFor="address" className="text-lg xs:text-xl font-bold">Address</label>
                         <textarea name="address" id="address" rows={3} className="w-80 bg-grey px-2 py-1 font-semibold resize-none" required onChange={handleProfileData} ></textarea>
                     </div>
                     <button 
                         type="submit"
-                        className="p-2 mt-2 mx-10 bg-primaryText text-white hover:bg-altBrand rounded-md"
+                        className="p-2 mt-4 mx-10 bg-primaryText text-white hover:bg-altBrand rounded-md"
                     >
                         Create Profile
                     </button>
                 </form>
             </div>
-            <div className="hidden lg:block w-[50%] ">
+            <div className="hidden lg:block w-[50%] pr-2">
                 <Image 
                     src="/images/meeting-point.jpg"
                     alt="meeting point"
