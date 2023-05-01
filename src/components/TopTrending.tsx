@@ -87,7 +87,7 @@ export default function TopTrending() {
 
 function TrendingCard(props: TrendingCardData) {
   return (
-    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer">
+    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer overflow-hidden">
       <Image 
         className="h-40 w-[18rem] rounded-t-2xl object-cover"
         src={props.imageSrc}
