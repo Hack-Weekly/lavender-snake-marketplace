@@ -24,60 +24,66 @@ export default function TopTrending() {
   return (
     <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
-      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Abstract Art</h1>
+      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Abstract Art</h2>
       <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* abstract art category */}
-        {abstractArtData.map((data, index) => (
-            <Link href={`/art/${key}`} key={index}>
-            <TrendingCard 
-              key={index}
-              imageSrc={data.imageSrc}
-              title={data.title}
-              author={data.author}
-              bids={data.bids}
-              quickBuy={data.quickBuy}
-              />
-          </Link>
-        ))}
+        <div className="flex items-center gap-5 overflow-x-auto">
+          {abstractArtData.map((data, index) => (
+              <Link href={`/art/${key}`} key={index}>
+              <TrendingCard 
+                key={index}
+                imageSrc={data.imageSrc}
+                title={data.title}
+                author={data.author}
+                bids={data.bids}
+                quickBuy={data.quickBuy}
+                />
+            </Link>
+          ))}
+        </div>
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Paintings and Drawings</h1>
+      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Paintings and Drawings</h2>
       <div className="flex w-full justify-center items-center gap-5">
         <ArrowLeft />
         {/* paintings category */}
-        {paintingData.map((data, index) => (
-            <Link href={`/art/${key}`} key={index}>
-            <TrendingCard 
-              key={index}
-              imageSrc={data.imageSrc}
-              title={data.title}
-              author={data.author}
-              bids={data.bids}
-              quickBuy={data.quickBuy}
-              />
-          </Link>
-        ))}
+        <div className="flex items-center gap-5 overflow-x-auto">
+          {paintingData.map((data, index) => (
+              <Link href={`/art/${key}`} key={index}>
+              <TrendingCard 
+                key={index}
+                imageSrc={data.imageSrc}
+                title={data.title}
+                author={data.author}
+                bids={data.bids}
+                quickBuy={data.quickBuy}
+                />
+            </Link>
+          ))}
+        </div>
         <ArrowRight />
       </div>
 
-      <h1 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Digital Art</h1>
-      <div className="flex w-full justify-center items-center gap-5">
+      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Digital Art</h2>
+      <div className="flex justify-center items-center gap-5">
         <ArrowLeft />
         {/* digital art category */}
-        {digitalArtData.map((data, index) => (
+        <div className="flex items-center gap-5 overflow-x-auto">
+          {digitalArtData.map((data, index) => (
             <Link href={`/art/${key}`} key={index}>
-          <TrendingCard 
-            key={index}
-            imageSrc={data.imageSrc}
-            title={data.title}
-            author={data.author}
-            bids={data.bids}
-            quickBuy={data.quickBuy}
-            />
-          </Link>
-        ))}
+              <TrendingCard 
+                key={index}
+                imageSrc={data.imageSrc}
+                title={data.title}
+                author={data.author}
+                bids={data.bids}
+                quickBuy={data.quickBuy}
+              />
+            </Link>
+          ))}
+        </div>
         <ArrowRight />
       </div>
 
@@ -87,7 +93,7 @@ export default function TopTrending() {
 
 function TrendingCard(props: TrendingCardData) {
   return (
-    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer overflow-hidden">
+    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer">
       <Image 
         className="h-40 w-[18rem] rounded-t-2xl object-cover"
         src={props.imageSrc}

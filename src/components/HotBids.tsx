@@ -67,10 +67,10 @@ const hotBidsData: Array<BidsData> = [
 
 function HotBidsCard(props: BidsData) {
   return (
-    <div className="flex w-[20rem] xs:w-[24rem] lg:w-[22rem] cursor-pointer flex-col items-center rounded-2xl bg-cardBg drop-shadow-xl">
+    <div className="flex w-[20rem] xs:w-[24rem] lg:w-[20rem] min-[1150px]:w-[22rem] cursor-pointer flex-col items-center rounded-2xl bg-cardBg drop-shadow-xl">
       <div>
         <Image
-          className="h-44 w-[20rem] xs:w-[24rem] lg:w-[22rem] rounded-t-2xl object-cover"
+          className="h-44 w-[20rem] xs:w-[24rem] lg:w-[20rem] min-[1150px]:w-[22rem] rounded-t-2xl object-cover"
           src={props.imageSrc}
           alt={props.artName}
           width={500}
