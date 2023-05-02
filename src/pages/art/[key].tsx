@@ -21,7 +21,7 @@ export default function ArtDetailsPage() {
   const router = useRouter();
   const { key } = router.query;
   const [item, setItem] = useState<Item | null>(null);
-  const [image, setImage] = useState<string | null | Blob>(null);
+  const [image, setImage] = useState<string | null >(null);
   
   useEffect(() => {
     const getArtData = async () => {
@@ -29,13 +29,13 @@ export default function ArtDetailsPage() {
       // const res = await fetch(`/api/items/${key}`);
 
       // mock data
-      const res = await fetch(`/api/items/31d125e4-e173-4d02-a85b-c2aef3e7d300`);
+      const res = await fetch(`/api/items/6fa896c6-96f9-4bb7-b115-4d2ccceb26b8`);
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const data: Item  = await res.json();
       setItem(data);
 
       const imageRes = await fetch(`/api/image/${data.imageName}`, {});
-      console.log(imageRes);
+      console.log(imageRes.url);
       
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -46,13 +46,13 @@ export default function ArtDetailsPage() {
       setImage(URL.createObjectURL(imageSrc));
     };
     if (key) {
-       getArtData()
+      getArtData()
         .catch(console.error);
     }
   }, [key]);
 
   if (!item) {
-    return <div>Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
@@ -69,15 +69,7 @@ export default function ArtDetailsPage() {
           </div>
         </div>
         <div className="rounded-xl border-2 border-black h-96 w-[30rem] text-center">
-          image goes here
-          {/* TODO: fetch the image seperately from deta drive using the image file name */}
-          {/* <img 
-            src={item.imageName || item.image} 
-            alt={item.name} 
-            className="border-2 border-black rounded-xl "
-          /> */}
-          {/* {image ?? <img src={image ?? ""} alt="image here" /> } */}
-          {/* <img src={image ?? ""} alt="image name here" /> */}
+          {image && <img src={image} alt="image here" /> }
         </div>
         <div className="mt-4">
           <p className="font-poppins font-semibold">DESCRIPTION:</p>
