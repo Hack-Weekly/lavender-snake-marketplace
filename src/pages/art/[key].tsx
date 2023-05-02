@@ -2,6 +2,7 @@ import { Bookmark, Share2, ShoppingCart, ArrowLeft, Truck, Package } from "lucid
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 type Item = {
   key?: string;
@@ -21,7 +22,7 @@ export default function ArtDetailsPage() {
   const router = useRouter();
   const { key } = router.query;
   const [item, setItem] = useState<Item | null>(null);
-  const [image, setImage] = useState<string | null | Blob>(null);
+  const [image, setImage] = useState<string | null>(null);
 
   const  handleCopyLink = async () =>  {
     try {
@@ -37,30 +38,30 @@ export default function ArtDetailsPage() {
       // const res = await fetch(`/api/items/${key}`);
 
       // mock data
-      const res = await fetch(`/api/items/31d125e4-e173-4d02-a85b-c2aef3e7d300`);
+      const res = await fetch(
+        `/api/items/6fa896c6-96f9-4bb7-b115-4d2ccceb26b8`
+      );
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const data: Item  = await res.json();
+      const data: Item = await res.json();
       setItem(data);
 
-      const imageRes = await fetch(`/api/image/${data.imageName}`, {});
-      console.log(imageRes);
-      
+      const imageRes = await fetch(`/api/image/${data.imageName}`);
+      console.log(imageRes.url);
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const imageSrc = await imageRes.blob();
       console.log(imageSrc);
-      
+
       // // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       setImage(URL.createObjectURL(imageSrc));
     };
     if (key) {
-       getArtData()
-        .catch(console.error);
+      getArtData().catch(console.error);
     }
   }, [key]);
 
   if (!item) {
-    return <div>Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
@@ -76,27 +77,16 @@ export default function ArtDetailsPage() {
             <Share2 onClick={handleCopyLink} className="hover:text-violet-500 cursor-pointer active:text-green-500" />
           </div>
         </div>
-
-        {/* for smaller layout */}
-        <div className="hidden max-lg:block max-lg:mb-7 max-lg:mt-3">
-          <h1 className="font-playfairDisplay text-5xl font-bold">{item.name}</h1>
-          <div className="flex mt-6">
-            <h2 className="font-baskervville">Artist: <b>{item.artist}</b></h2>
-            <span className="mx-4">|</span>
-            <h2 className="font-poppins">Category: <b>{item.category}</b></h2>
-          </div>
-        </div>
-
-        <div className="rounded-xl border-2 border-black h-96 w-[30rem] text-center max-lg:w-full">
-          image goes here
-          {/* TODO: fetch the image seperately from deta drive using the image file name */}
-          {/* <img 
-            src={item.imageName || item.image} 
-            alt={item.name} 
-            className="border-2 border-black rounded-xl "
-          /> */}
-          {/* {image ?? <img src={image ?? ""} alt="image here" /> } */}
-          {/* <img src={image ?? ""} alt="image name here" /> */}
+        <div className="h-96 w-[30rem] rounded-xl text-center bg-cardBg">
+          {image && 
+            <Image
+              src={image}
+              alt=""
+              width={500}
+              height={500}
+              className="w-[30rem] h-96 rounded-xl"
+            />
+          }
         </div>
         <div className="mt-4">
           <p className="font-poppins font-semibold">DESCRIPTION:</p>
