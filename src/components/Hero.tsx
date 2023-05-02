@@ -66,7 +66,7 @@ function SpotlightCard(props: SpotlightData) {
   return (
     <div className="flex w-72 xs:w-80 min-[900px]:w-64 lg:w-72 cursor-pointer flex-col items-center">
       <Image
-        className="h-44 w-72 xs:w-80 min-[900px]:w-64 lg:w-72 rounded-2xl"
+        className="h-44 w-72 xs:w-80 min-[900px]:w-64 lg:w-72 rounded-2xl hover:drop-shadow-xl"
         src={props.imageSrc}
         alt={props.artName}
         width={500}

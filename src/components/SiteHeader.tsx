@@ -23,7 +23,7 @@ function Logo() {
       <div className="h-16 w-16">
         <img src="/lavender-snake.png" alt="lavender snake logo" />
       </div>
-      <h1 className="hidden sm:block via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text font-poppins text-4xl font-extrabold text-transparent">
+      <h1 className="hidden sm:block via-purple-200-200 bg-gradient-to-r from-pink-100 to-violet-300 bg-clip-text hover:from-pink-200 hover:to-violet-400 font-poppins text-4xl font-extrabold text-transparent">
         LavenScape
       </h1>
     </Link>
@@ -81,7 +81,12 @@ function Plus() {
 function Cart() {
   return (
     <IconButton>
-      <ShoppingCartIcon />
+      <div className="relative">
+        <ShoppingCartIcon />
+        <div className="absolute w-full -top-[0.65rem] pl-[0.2rem] text-[#ad4392] text-sm font-bold">
+          7
+        </div>
+      </div>
     </IconButton>
   );
 }
@@ -96,5 +101,5 @@ function Bookmark() {
 
 // Wrap this around any icon to make it a button
 export function IconButton({ children }: { children: React.ReactNode }) {
-  return <button className="text-violet-200">{children}</button>;
+  return <button className="text-violet-200 hover:text-violet-500 flex items-center justify-center">{children}</button>;
 }

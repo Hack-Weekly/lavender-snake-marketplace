@@ -79,7 +79,7 @@ const UserProfileFn = (props: {sessionData: sessionDataT, profileData: profileDa
 
   return (
     <div className="font-poppins">
-      <div className="flex items-end p-6 bg-geraldineBg">
+      <div className="flex items-end p-4 xs:p-6 bg-geraldineBg">
         <div>
           {props.sessionData.image && 
             <Image
@@ -88,27 +88,27 @@ const UserProfileFn = (props: {sessionData: sessionDataT, profileData: profileDa
             width={100}
             height={100}
             priority
-            className="rounded-lg"
+            className="rounded-lg w-16 xs:w-20 sm:w-24 md:w-28 h-auto"
           />
           }
         </div>
-        <div className="ml-6">
-          <div className="font-playfairDisplay text-5xl font-semibold mb-2" >
+        <div className="ml-3 xs:ml-4 sm:ml-6">
+          <div className="font-playfairDisplay text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-semibold sm:mb-1 md:mb-2" >
             {props.profileData.firstName} {props.profileData.middleName} {props.profileData.surName}
           </div>
-          <div className="text-lg italic font-light">@{props.sessionData.userName}</div>
+          <div className="xs:text-lg italic font-light">@{props.sessionData.userName}</div>
         </div>
         <div className="ml-auto bg-cardBg p-2 rounded-full cursor-pointer">
-          <Pencil />
+          <Pencil size="22" />
         </div>
       </div>
-      <div className="p-6">
+      <div className="p-4 xs:p-6 mb-1">
         <div className="text-lg font-bold">CURRENTLY SELLING ARTS</div>
         {(loading) &&
           <div>Loading...</div>
         }
         {(!loading) &&
-          <div className="w-6/12 flex flex-col border border-altBrand mt-2">
+          <div className="w-full xs:w-full sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 flex flex-col border border-altBrand mt-2">
             {
               sellingItems.map((item, index) => {
                 return (
@@ -126,7 +126,7 @@ const UserProfileFn = (props: {sessionData: sessionDataT, profileData: profileDa
 
 function SellingArt(props: {sellingItem: Item, deleteItem: (id: string) => Promise<void>}){
   return (
-    <div className="flex items-center justify-between odd:bg-[#f9f9fa] even:bg-grey  py-2 px-4">
+    <div className="flex items-center justify-between text-sm xs:text-base odd:bg-[#f9f9fa] even:bg-grey py-2 px-4">
       <div>{props.sellingItem.name}</div>
       <a href={`/art/${props.sellingItem.id}`} target="_blank" className="ml-auto text-sm text-altBrand hover:underline" >
         View
