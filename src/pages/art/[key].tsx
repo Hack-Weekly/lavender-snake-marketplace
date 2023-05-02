@@ -53,9 +53,9 @@ export default function ArtDetailsPage() {
     <div className="flex gap-7 p-11 justify-center items-center max-lg:flex-col">
       <div className="flex flex-col justify-center-center max-lg:w-full">
         <div className="flex justify-between mb-2">
-          <div className="flex rounded-xl bg-grey px-3 py-1">
+          <div className="flex rounded-xl bg-grey px-3 py-1 items-center">
             <ArrowLeft className="mr-3" />
-            <Link href="/" className="font-playfairDisplay text-sm">Back to homepage</Link>  
+            <Link href="/" className="font-playfairDisplay text-sm max-xs:text-xs">Back to homepage</Link>  
           </div>
           <div className="flex">
             <Bookmark className="mr-3" />
@@ -65,7 +65,7 @@ export default function ArtDetailsPage() {
 
         {/* for smaller layout */}
         <div className="hidden max-lg:block max-lg:mb-7 max-lg:mt-3">
-          <h1 className="font-playfairDisplay text-7xl font-bold">{item.name}</h1>
+          <h1 className="font-playfairDisplay text-5xl font-bold">{item.name}</h1>
           <div className="flex mt-6">
             <h2 className="font-baskervville">Artist: <b>{item.artist}</b></h2>
             <span className="mx-4">|</span>
@@ -102,28 +102,30 @@ export default function ArtDetailsPage() {
 
           <div className="flex gap-4 justify-start font-playfairDisplay font-semibold
                         text-yellowText text-base sm:text-xs md:text-sm lg:text-base
-                          max-lg:flex-col
+                          max-lg:flex-col 
           ">
-            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5">
-              <Package className="mr-2" />
-              <p>BID</p>
-            </button>
-            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 max-lg:order-first">
+            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 order-last max-lg:order-first">
               <Truck className="mr-3" />
-              <p>QUICK BUY</p>
+              <p className="max-lg:block max-[1110px]:hidden">QUICK BUY</p>
               <span className="mx-4">|</span>
               <p className="">${item.price}</p>
             </button>
-            <button className="flex justify-center items-center bg-grey font-bold text-black rounded-lg py-2 px-5">
-              <ShoppingCart className="mr-2" />
-              <p>Add to cart</p>
-            </button>
+            <div className="flex gap-2">
+              <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 max-lg:w-full">
+                <Package className="mr-2" />
+                <p className="max-lg:block max-xl:hidden">BID</p>
+              </button>
+              <button className="flex justify-center items-center bg-grey font-bold text-black rounded-lg py-2 px-5 max-lg:w-full">
+                <ShoppingCart className="mr-2" />
+                <p className="max-lg:block max-xl:hidden">Add to cart</p>
+              </button>
+            </div>
           </div>
 
           {/* Data fetch Bids here, for now just mock data */}
           <div className="bg-indigoBg font-poppins rounded-lg p-7">
             <p className="font-bold text-3xl text-yellowText">LATEST BIDS:</p>
-            <div className="flex justify-between m-3 max-lg:text-sm">
+            <div className="flex justify-between m-3 max-lg:text-sm max-sm:text-xs ">
               <div className="flex flex-col justify-center items-center">
                 <p className="text-yellowText font-bold m-3">FROM</p>
                 <div className="flex flex-col justify-center items-start text-grey">
