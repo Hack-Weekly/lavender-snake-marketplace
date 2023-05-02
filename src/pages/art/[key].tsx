@@ -2,7 +2,6 @@ import { Bookmark, Share2, ShoppingCart, ArrowLeft, Truck, Package } from "lucid
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { imageDrive } from "~/server/deta";
 
 type Item = {
   key?: string;
@@ -35,9 +34,16 @@ export default function ArtDetailsPage() {
       const data: Item  = await res.json();
       setItem(data);
 
-      // const imageFromDeta = await imageDrive.get(item?.imageName ?? "");
+      const imageRes = await fetch(`/api/image/${data.imageName}`, {});
+      console.log(imageRes);
+      
 
-      // setImage(imageFromDeta);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const imageSrc = await imageRes.blob();
+      console.log(imageSrc);
+      
+      // // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      setImage(URL.createObjectURL(imageSrc));
     };
     if (key) {
        getArtData()
