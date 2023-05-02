@@ -38,7 +38,7 @@ export default function TopTrending() {
   return (
     <div className="bg-indigoBg flex flex-col flex-1 gap-6 px-3 py-10">
 
-      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Abstract Art</h2>
+      <h2 className="font-poppins text-yellowText text-xl xs:text-2xl font-bold">Top Trending in Abstract Art</h2>
       <div className="flex w-full justify-center items-center gap-5">
         <div onClick={() => scrollHorizontal("abstract", false)}>
           <ArrowLeft />
@@ -63,7 +63,7 @@ export default function TopTrending() {
         </div>
       </div>
 
-      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Paintings and Drawings</h2>
+      <h2 className="font-poppins text-yellowText text-xl xs:text-2xl font-bold">Top Trending in Paintings and Drawings</h2>
       <div className="flex w-full justify-center items-center gap-5">
         <div onClick={() => scrollHorizontal("paintings", false)}>
           <ArrowLeft />
@@ -88,7 +88,7 @@ export default function TopTrending() {
         </div>
       </div>
 
-      <h2 className="font-poppins text-yellowText text-2xl font-bold">Top Trending in Digital Art</h2>
+      <h2 className="font-poppins text-yellowText text-xl xs:text-2xl font-bold">Top Trending in Digital Art</h2>
       <div className="flex justify-center items-center gap-5">
         <div onClick={() => scrollHorizontal("digital", false)}>
           <ArrowLeft />
@@ -119,9 +119,9 @@ export default function TopTrending() {
 
 function TrendingCard(props: TrendingCardData) {
   return (
-    <div className="bg-cardBg flex flex-col rounded-2xl w-[18rem] drop-shadow-md cursor-pointer">
+    <div className="bg-cardBg flex flex-col rounded-2xl w-[16rem] sm:w-[18rem] drop-shadow-md cursor-pointer">
       <Image 
-        className="h-40 w-[18rem] rounded-t-2xl object-cover"
+        className="h-40 w-[16rem] sm:w-[18rem] rounded-t-2xl object-cover"
         src={props.imageSrc}
         alt={props.title}
         width={500}
@@ -308,9 +308,7 @@ const digitalArtData: Array<TrendingCardData> = [
 function ArrowLeft() {
   return (
     <IconButton>
-      <div className="bg-cardBg rounded-full p-1">
-          <ChevronLeft className="text-indigoBg h-9 w-9"/>
-      </div>
+      <ChevronLeft className="text-indigoBg bg-cardBg h-8 w-8 xs:h-9 xs:w-9 xl:w-10 xl:h-10 p-1 rounded-full hover:text-cardBg hover:bg-altBrand" />
     </IconButton>
   );
 }
@@ -318,9 +316,7 @@ function ArrowLeft() {
 function ArrowRight() {
   return (
     <IconButton>
-      <div className="bg-cardBg rounded-full p-1">
-          <ChevronRight className="text-indigoBg h-9 w-9"/>
-      </div>
+      <ChevronRight className="text-indigoBg bg-cardBg h-8 w-8 xs:h-9 xs:w-9 xl:w-10 xl:h-10 p-1 rounded-full hover:text-cardBg hover:bg-altBrand" />
     </IconButton>
   );
 }

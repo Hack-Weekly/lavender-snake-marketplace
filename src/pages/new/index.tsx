@@ -157,24 +157,23 @@ export default function NewArt(){
         )
     } else{
         return(
-            <div className="w-full p-6 px-10">
+            <div className="w-full p-6 px-6 xs:px-10">
                 <div className="flex gap-2">
                     <div className="border border-primaryText rounded-sm">
-                        <Plus size={40} />
+                        <Plus size={36} />
                     </div>
-                    <div className="text-4xl font-bold font-playfairDisplay">
+                    <div className="text-2xl xs:text-4xl font-bold font-playfairDisplay">
                         Sell your masterpiece
                     </div>
                 </div>
                 <form 
                     action="" 
                     method="post" 
-                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                    onSubmit={submitNewArt} 
-                    className="flex mt-6 font-poppins"
+                    onSubmit={void submitNewArt} 
+                    className="flex flex-col min-[800px]:flex-row gap-6 mt-6 font-poppins"
                 >
-                    <div className="w-6/12 flex flex-col items-center px-6">
-                        <div className="font-bold text-xl mb-4">
+                    <div className="w-full min-[800px]:w-6/12 flex flex-col items-center px-6">
+                        <div className="font-bold text-lg xs:text-xl mb-2 xs:mb-4">
                             UPLOAD YOUR ART
                         </div>
                         <input 
@@ -186,7 +185,7 @@ export default function NewArt(){
                             required
                             onChange={handleImageChange} 
                         />
-                        <div className="mt-6 w-[25rem] h-[17rem] bg-cardBg rounded-md flex items-center justify-center">
+                        <div className="mt-6 w-[20rem] xs:w-[22rem] sm:w-[21rem] md:w-[23rem] lg:w-[25rem] h-[17rem] bg-cardBg rounded-md flex items-center justify-center">
                             {imagePreview && 
                                 <Image 
                                     src={URL.createObjectURL(imagePreview)}
@@ -201,61 +200,51 @@ export default function NewArt(){
                             }
                         </div>
                     </div>
-                    <div className="w-6/12">
-                        <div className="flex flex-col gap-2 font-semibold pl-6">
+                    <div className="w-full min-[800px]:w-6/12 flex items-center justify-center min-[800px]:justify-start">
+                        <div className="flex flex-col gap-2 font-semibold min-[800px]:pl-6">
                             <div className="flex flex-col gap-1">
-                                <label htmlFor="name" className="text-xl">Art Name</label>
+                                <label htmlFor="name" className="text-lg xs:text-xl">Art Name</label>
                                 <input 
                                     type="text"
                                     name="name"
                                     id="name"
                                     autoComplete="off"
-                                    className="w-96 bg-grey px-2 py-1 rounded-sm"
+                                    className="w-80 lg:w-96 bg-grey px-2 py-1 text-sm xs:text-base rounded-sm"
                                     required
                                     value={newArtData.name}
                                     onChange={handleArtInputChange}
                                 />
                             </div>
                             <div className="flex flex-col gap-1">
-                                <label htmlFor="category" className="text-xl">Select Category</label>
-                                <select name="category" id="category" required className="w-96 bg-grey px-2 py-1 rounded-sm cursor-pointer" value={newArtData.category} onChange={handleArtInputChange}>
-                                    <option value="abstract-art">Abstract Art</option>
-                                    <option value="paintings-and-drawings">Paintings and Drawings</option>
-                                    <option value="fantasy">Fantasy</option>
-                                    <option value="digital-art">Digital Art</option>
-                                    <option value="photography">Photography</option>
+                                <label htmlFor="category" className="text-lg xs:text-xl">Select Category</label>
+                                <select name="category" id="category" required className="w-80 lg:w-96 bg-grey px-2 py-1 text-sm xs:text-base rounded-sm cursor-pointer" value={newArtData.category} onChange={handleArtInputChange}>
+                                    <option value="abstract-art" className="text-sm xs:text-base">Abstract Art</option>
+                                    <option value="paintings-and-drawings" className="text-sm xs:text-base">Paintings and Drawings</option>
+                                    <option value="fantasy" className="text-sm xs:text-base">Fantasy</option>
+                                    <option value="digital-art" className="text-sm xs:text-base">Digital Art</option>
+                                    <option value="photography" className="text-sm xs:text-base">Photography</option>
                                 </select>
-                                {/* <input 
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    autoComplete="off"
-                                    className="w-96 bg-grey px-2 py-1 rounded-sm"
-                                    
-                                    value={newArtData.name}
-                                    
-                                /> */}
                             </div>
                             <div className="flex flex-col gap-1">
-                                <label htmlFor="description" className="text-xl rounded-sm">Description</label>
+                                <label htmlFor="description" className="text-lg xs:text-xl rounded-sm">Description</label>
                                 <textarea 
                                     name="description" 
                                     id="description" 
                                     rows={3} 
-                                    className="w-96 bg-grey px-2 py-1 resize-none" 
+                                    className="w-80 lg:w-96 bg-grey px-2 py-1 text-sm xs:text-base resize-none" 
                                     required
                                     value={newArtData.description}
                                     onChange={handleArtInputChange}
                                 ></textarea>
                             </div>
                             <div className="flex flex-col gap-1">
-                                <label htmlFor="price" className="text-xl">Price <span className="text-base font-normal">(USD)</span></label>
+                                <label htmlFor="price" className="text-lg xs:text-xl">Price <span className="text-base font-normal">(USD)</span></label>
                                 <input 
                                     type="number"
                                     name="price"
                                     id="price"
                                     autoComplete="off"
-                                    className="w-52 bg-grey px-2 py-1 rounded-sm"
+                                    className="w-48 lg:w-52 bg-grey px-2 py-1 text-sm xs:text-base rounded-sm"
                                     required
                                     value={newArtData.price}
                                     onChange={handleArtInputChange}
@@ -267,27 +256,27 @@ export default function NewArt(){
                                     name="isUnique"
                                     id="isUnique"
                                     autoComplete="off"
-                                    className="w-4 h-4 text-grey bg-altBrand accent-altBrand border-altBrand rounded focus:ring-primaryText cursor-pointer"
+                                    className="w-4 h-4 text-sm xs:text-base text-grey bg-altBrand accent-altBrand border-altBrand rounded focus:ring-primaryText cursor-pointer"
                                     checked={newArtData.isUnique}
                                     // value={`${newArtData.isUnique}`}
                                     onChange={handleArtInputChange}
                                 />
-                                <label htmlFor="isUnique" className="text-xl cursor-pointer">This art is unique</label>
+                                <label htmlFor="isUnique" className="text-lg xs:text-xl cursor-pointer">This art is unique</label>
                             </div>
                             <div className="flex flex-col gap-1">
-                                <label htmlFor="amount" className="text-xl">Stocks</label>
+                                <label htmlFor="amount" className="text-lg xs:text-xl">Stocks</label>
                                 <input 
                                     type="number"
                                     name="amount"
                                     id="amount"
                                     autoComplete="off"
-                                    className="w-52 bg-grey px-2 py-1 font-semibold rounded-sm"
+                                    className="w-48 lg:w-52 bg-grey px-2 py-1 text-sm xs:text-base font-semibold rounded-sm"
                                     disabled={newArtData.isUnique}
                                     value={newArtData.amount ?? ""}
                                     onChange={handleArtInputChange}
                                 />
                             </div>
-                            <button type="submit" className="w-52 py-2 bg-altBrand rounded mt-4 text-white">Submit</button>
+                            <button type="submit" className="w-48 lg:w-52 py-2 bg-altBrand rounded mt-4 text-white">Submit</button>
                         </div>
                     </div>
                 </form>

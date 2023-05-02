@@ -30,7 +30,7 @@ function AvatarWithMenu() {
   return (
     <Menu as="div" className="relative inline-block">
       <Menu.Button className="flex">
-        <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full object-cover shadow-inner">
+        <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full object-cover shadow-inner hover:rotate-12 transition-transform">
           <img
             src={session?.user.image || "/default-user-image.jpg"}
             alt="user profile"
