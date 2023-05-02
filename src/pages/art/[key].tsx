@@ -23,7 +23,15 @@ export default function ArtDetailsPage() {
   const { key } = router.query;
   const [item, setItem] = useState<Item | null>(null);
   const [image, setImage] = useState<string | null | Blob>(null);
-  
+
+  const  handleCopyLink = async () =>  {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+    } catch (error) {
+      console.error("failed to copy link: ", error)
+    }
+  };
+
   useEffect(() => {
     const getArtData = async () => {
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
@@ -53,13 +61,13 @@ export default function ArtDetailsPage() {
     <div className="flex gap-7 p-11 justify-center items-center max-lg:flex-col">
       <div className="flex flex-col justify-center-center max-lg:w-full">
         <div className="flex justify-between mb-2">
-          <div className="flex rounded-xl bg-grey px-3 py-1 items-center">
+          <div className="flex rounded-xl bg-grey px-3 py-1 items-center hover:bg-gray-300">
             <ArrowLeft className="mr-3" />
             <Link href="/" className="font-playfairDisplay text-sm max-xs:text-xs">Back to homepage</Link>  
           </div>
           <div className="flex">
-            <Bookmark className="mr-3" />
-            <Share2 />
+            <Bookmark className="mr-3 hover:text-violet-500 cursor-pointer" />
+            <Share2 onClick={handleCopyLink} className="hover:text-violet-500 cursor-pointer active:text-green-500" />
           </div>
         </div>
 
@@ -104,18 +112,18 @@ export default function ArtDetailsPage() {
                         text-yellowText text-base sm:text-xs md:text-sm lg:text-base
                           max-lg:flex-col 
           ">
-            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 order-last max-lg:order-first">
+            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 order-last max-lg:order-first hover:bg-red-950 active:bg-red-950">
               <Truck className="mr-3" />
               <p className="max-lg:block max-[1110px]:hidden">QUICK BUY</p>
               <span className="mx-4">|</span>
               <p className="">${item.price}</p>
             </button>
             <div className="flex gap-2">
-              <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 max-lg:w-full">
+              <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 max-lg:w-full hover:bg-red-950">
                 <Package className="mr-2" />
                 <p className="max-lg:block max-xl:hidden">BID</p>
               </button>
-              <button className="flex justify-center items-center bg-grey font-bold text-black rounded-lg py-2 px-5 max-lg:w-full">
+              <button className="flex justify-center items-center bg-grey font-bold text-black rounded-lg py-2 px-5 max-lg:w-full hover:bg-gray-300">
                 <ShoppingCart className="mr-2" />
                 <p className="max-lg:block max-xl:hidden">Add to cart</p>
               </button>
