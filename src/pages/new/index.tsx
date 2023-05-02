@@ -61,17 +61,24 @@ export default function NewArt(){
             reader.onloadend = function(){
                 setImagePreview(file);
                 //image is of type string, avoiding null value here
-                const data = reader.result || "";
-
-                //update input data, and check for arraybuffer type
-                if(typeof data === "string"){
-                    setNewArtData((prevValue) => {
-                        return({
-                            ...prevValue,
-                            imageName: newImageName,
-                            image: data,
-                        })
-                    })
+                if(typeof reader.result === "string"){
+                    const data=(reader.result).split(',')[1];
+                    if(data){
+                        const binaryBlob = atob(data);
+                        console.log(binaryBlob);
+                        
+                        
+                        //update input data, and check for arraybuffer type
+                        if(typeof data === "string"){
+                            setNewArtData((prevValue) => {
+                                return({
+                                    ...prevValue,
+                                    imageName: newImageName,
+                                    image: binaryBlob,
+                                })
+                            })
+                        }
+                    }
                 }
             }
             reader.readAsDataURL(file);            
@@ -169,7 +176,8 @@ export default function NewArt(){
                 <form 
                     action="" 
                     method="post" 
-                    onSubmit={void submitNewArt} 
+                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    onSubmit={submitNewArt} 
                     className="flex flex-col min-[800px]:flex-row gap-6 mt-6 font-poppins"
                 >
                     <div className="w-full min-[800px]:w-6/12 flex flex-col items-center px-6">
