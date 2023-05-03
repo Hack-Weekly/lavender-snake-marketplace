@@ -37,13 +37,12 @@ export default function CartModal(props: {closeCart: () => void}){
         onClick={handleOverlayClick}
       >
         <div className="absolute top-1/2 left-1/2 w-full xs:w-11/12 sm:w-10/12 md:w-8/12 h-[26rem] md:h-[30rem] -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl px-2 md:px-4 pt-2 md:py-2" id="modal">
-          <div className="relative h-full flex flex-col justify-between py-2 overflow-hidden">
-            <div className="absolute top-0 right-0 cursor-pointer" onClick={props.closeCart}>
-              <X className="w-8 h-8" />
+          <div className="relative h-full flex flex-col justify-between font-poppins py-2 overflow-hidden">
+            <div className="absolute top-0 right-0 cursor-pointer hover:bg-cardBg rounded-full" onClick={props.closeCart}>
+              <X className="w-8 h-8 hover:scale-90 duration-300" />
             </div>
             <div className="lg:mt-2 flex items-center gap-2">
               <Image
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 src="/cart.svg"
                 width={50}
                 height={50}
@@ -69,7 +68,7 @@ export default function CartModal(props: {closeCart: () => void}){
               </div>
             </div>
             <div className="text-right">
-              <Link href="/checkout">
+              <Link href="/checkout/cartId">
                 <button 
                   className="p-2 mt-2 lg:mt-4 w-40 sm:w-48 text-sm sm:text-base text-white font-normal bg-altBrand hover:bg-primaryText rounded-md" onClick={props.closeCart}
                 >
@@ -139,7 +138,7 @@ function CartItem(props: {item: CartDataT, closeCart: () => void}){
         {formatter.format(props.item.price)}
       </div>
       <Trash2 
-        size="20" 
+        size="18" 
         className="ml-6 xs:ml-8 sm:ml-10 md:ml-16 lg:ml-28 cursor-pointer"
         
       />
