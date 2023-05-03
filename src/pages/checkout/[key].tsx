@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import Image from "next/image";
 import formatter from "~/components/CurrencyFormatter";
 import { Trash2 } from "lucide-react";
@@ -128,7 +128,7 @@ function CartItem(props: {item: CartDataT}){
         height={100}
         className="w-14 h-12 mr-4 rounded-sm"
       />
-      <Link href={`art/id`} className="mr-3">
+      <Link href={`/art/id`} className="mr-3">
         {props.item.artName}
       </Link>
       <div className="ml-auto w-14 lg:w-20 text-altBrand" >
