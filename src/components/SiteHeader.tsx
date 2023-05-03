@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import UserInfo from "./UserInfo";
 import Link from "next/link";
+import { useState } from "react";
+import CartModal from "./CartModal";
 
 export default function SiteHeader() {
   return (
@@ -31,15 +33,22 @@ function Logo() {
 }
 
 function Nav() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleIsCartOpen = () => {
+    setIsCartOpen(!isCartOpen);
+  }
+
   return (
     <div className="md:mr-4 flex flex-1 items-center justify-between">
       <Search />
       <div className="flex gap-3 sm:gap-4 md:gap-6 ml-auto">
         <Plus />
-        <Cart />
+        <Cart openCart={toggleIsCartOpen} />
         <Bookmark />
         <UserInfo />
       </div>
+      {isCartOpen && <CartModal closeCart={toggleIsCartOpen} /> }
     </div>
   );
 }
@@ -78,10 +87,10 @@ function Plus() {
   );
 }
 
-function Cart() {
+function Cart(props: {openCart: () => void}) {
   return (
     <IconButton>
-      <div className="relative">
+      <div className="relative" onClick={props.openCart}>
         <ShoppingCartIcon />
         <div className="absolute w-full -top-[0.65rem] pl-[0.2rem] text-[#ad4392] text-sm font-bold">
           7
