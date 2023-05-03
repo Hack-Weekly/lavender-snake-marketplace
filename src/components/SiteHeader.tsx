@@ -93,7 +93,7 @@ function Cart(props: {openCart: () => void}) {
       <div className="relative" onClick={props.openCart}>
         <ShoppingCartIcon />
         <div className="absolute w-full -top-[0.65rem] pl-[0.2rem] text-[#ad4392] text-sm font-bold">
-          7
+          6
         </div>
       </div>
     </IconButton>
