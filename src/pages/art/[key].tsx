@@ -40,32 +40,23 @@ export default function ArtDetailsPage() {
   };
 
   useEffect(() => {
-    const getArtData = async () => {
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      // const res = await fetch(`/api/items/${key}`);
-
-      // mock data
-      const res = await fetch(
-        `/api/items/6fa896c6-96f9-4bb7-b115-4d2ccceb26b8`
-      );
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const data: Item = await res.json();
-      setItem(data);
-
-      const imageRes = await fetch(`/api/image/${data.imageName}`);
-      console.log(imageRes.url);
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const imageSrc = await imageRes.blob();
-      console.log(imageSrc);
-
-      // // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      setImage(URL.createObjectURL(imageSrc));
-    };
     if (key) {
       getArtData().catch(console.error);
     }
   }, [key]);
+  
+  const getArtData = async () => {
+    // change items id
+    const res = await fetch(`/api/items/6fa896c6-96f9-4bb7-b115-4d2ccceb26b8`);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const data: Item = await res.json();
+    setItem(data);
+
+    const imageRes = await fetch(`/api/image/${data.imageName}`);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const imageSrc = await imageRes.blob();
+    setImage(URL.createObjectURL(imageSrc));
+  };
 
   if (!item) {
     return <div className="p-6">Loading...</div>;
