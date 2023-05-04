@@ -1,4 +1,11 @@
-import { Bookmark, Share2, ShoppingCart, ArrowLeft, Truck, Package } from "lucide-react";
+import {
+  Bookmark,
+  Share2,
+  ShoppingCart,
+  ArrowLeft,
+  Truck,
+  Package,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -65,12 +72,14 @@ export default function ArtDetailsPage() {
   }
 
   return (
-    <div className="flex gap-7 p-11 justify-center items-center max-lg:flex-col">
-      <div className="flex flex-col justify-center-center max-lg:w-full">
-        <div className="flex justify-between mb-2">
-          <div className="flex rounded-xl bg-grey px-3 py-1 items-center hover:bg-gray-300">
+    <div className="flex justify-center gap-7 p-11">
+      <div className="flex flex-col ">
+        <div className="mb-2 flex justify-between">
+          <div className="flex rounded-xl bg-grey px-3 py-1">
             <ArrowLeft className="mr-3" />
-            <Link href="/" className="font-playfairDisplay text-sm max-xs:text-xs">Back to homepage</Link>  
+            <Link href="/" className="font-playfairDisplay text-sm">
+              Back to homepage
+            </Link>
           </div>
           <div className="flex">
             <Bookmark className="mr-3 hover:text-violet-500 cursor-pointer" />
@@ -104,60 +113,54 @@ export default function ArtDetailsPage() {
             </div>
           </div>
 
-          <div className="flex gap-4 justify-start font-playfairDisplay font-semibold
-                        text-yellowText text-base sm:text-xs md:text-sm lg:text-base
-                          max-lg:flex-col 
-          ">
-            <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 order-last max-lg:order-first hover:bg-red-950 active:bg-red-950">
-              <Truck className="mr-3" />
-              <p className="max-lg:block max-[1110px]:hidden">QUICK BUY</p>
-              <span className="mx-4">|</span>
-              <p className="">${item.price}</p>
-            </button>
-            <div className="flex gap-2">
-              <button className="flex justify-center items-center bg-redBg rounded-lg py-2 px-5 max-lg:w-full hover:bg-red-950">
-                <Package className="mr-2" />
-                <p className="max-lg:block max-xl:hidden">BID</p>
-              </button>
-              <button className="flex justify-center items-center bg-grey font-bold text-black rounded-lg py-2 px-5 max-lg:w-full hover:bg-gray-300">
-                <ShoppingCart className="mr-2" />
-                <p className="max-lg:block max-xl:hidden">Add to cart</p>
-              </button>
-            </div>
-          </div>
+        <div className="flex justify-between gap-4 font-playfairDisplay text-base font-semibold text-yellowText sm:text-xs md:text-sm lg:text-base">
+          <button className="flex items-center justify-center rounded-lg bg-redBg px-5 py-2">
+            <Package className="mr-2" />
+            <p>BID</p>
+          </button>
+          <button className="flex items-center justify-center rounded-lg bg-redBg px-5 py-2">
+            <Truck className="mr-3" />
+            <p className="">QUICK BUY</p>
+            <span className="mx-4">|</span>
+            <p className="">${item.price}</p>
+          </button>
+          <button className="flex items-center justify-center rounded-lg bg-grey px-5 py-2 font-bold text-black">
+            <ShoppingCart className="mr-2" />
+            <p>Add to cart</p>
+          </button>
+        </div>
 
-          {/* Data fetch Bids here, for now just mock data */}
-          <div className="bg-indigoBg font-poppins rounded-lg p-7">
-            <p className="font-bold text-3xl text-yellowText">LATEST BIDS:</p>
-            <div className="flex justify-between m-3 max-lg:text-sm max-sm:text-xs ">
-              <div className="flex flex-col justify-center items-center">
-                <p className="text-yellowText font-bold m-3">FROM</p>
-                <div className="flex flex-col justify-center items-start text-grey">
-                  <p>OneMan</p>       
-                  <p>TwoMan</p>
-                  <p>Ej Sadiarin</p>
-                </div>
+        {/* Data fetch Bids here, for now just mock data */}
+        <div className="rounded-lg bg-indigoBg p-7 font-poppins">
+          <p className="text-3xl font-bold text-yellowText">LATEST BIDS:</p>
+          <div className="m-3 flex justify-evenly">
+            <div className="flex flex-col items-center justify-center">
+              <p className="m-3 font-bold text-yellowText">FROM</p>
+              <div className="flex flex-col items-start justify-center text-grey">
+                <p>OneMan</p>
+                <p>TwoMan</p>
+                <p>Ej Sadiarin</p>
               </div>
-              <div className="flex flex-col justify-center items-center">
-                <p className="text-yellowText font-bold m-3">BIDS</p>
-                <div className="flex flex-col justify-center items-start text-grey">
-                  <p>$10</p>
-                  <p>$100</p>
-                  <p>$1,000</p>
-                </div>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <p className="m-3 font-bold text-yellowText">BIDS</p>
+              <div className="flex flex-col items-start justify-center text-grey">
+                <p>$10</p>
+                <p>$100</p>
+                <p>$1,000</p>
               </div>
-              <div className="flex flex-col justify-center items-center">
-                <p className="text-yellowText font-bold m-3">TIME</p>
-                <div className="flex flex-col justify-center items-start text-grey">
-                  <p>1 hour ago</p>
-                  <p>2 hours ago</p>
-                  <p>3 hours ago</p>
-                </div>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <p className="m-3 font-bold text-yellowText">TIME</p>
+              <div className="flex flex-col items-start justify-center text-grey">
+                <p>1 hour ago</p>
+                <p>2 hours ago</p>
+                <p>3 hours ago</p>
               </div>
             </div>
           </div>
         </div>
-
+      </div>
     </div>
   );
 }
