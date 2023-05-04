@@ -8,16 +8,11 @@ export default async function handler(
 ) {
   const { key } = req.query;
   if (req.method === "GET") {
-    // res.setHeader('Content-Type', 'image/svg+xml');
-    console.log(key);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const blobItem = await imageDrive.get(key as string);
-    console.log(blobItem);
-
     if (blobItem) {
       const arrayBufferItem = await blobItem.arrayBuffer();
       const item = Buffer.from(arrayBufferItem);
-      console.log(item);
       res.status(200).send(item);
     } else res.status(404).json(errorResponse(404));
   } else if (req.method === "DELETE") {
