@@ -30,14 +30,21 @@ export default function ArtDetailsPage() {
   const { key } = router.query;
   const [item, setItem] = useState<Item | null>(null);
   const [image, setImage] = useState<string | null>(null);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const  handleCopyLink = async () =>  {
     try {
       await navigator.clipboard.writeText(window.location.href);
+      setIsCopied(true);
     } catch (error) {
       console.error("failed to copy link: ", error)
     }
   };
+
+  if (isCopied) {
+    alert("Link copied to Clipboard!");
+    setIsCopied(false);
+  }
 
   useEffect(() => {
     const getArtData = async () => {
