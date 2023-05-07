@@ -131,18 +131,14 @@ function TrendingCard(props: TrendingCardData) {
 
       <div className="flex flex-col px-4 py-2">
 
-        <div className="font-baskervville mb-4">        
+        <div className="font-baskervville mb-2">        
           <h1 className="font-bold text-base">{props.title}</h1>
           <h2 className="font-light text-[#2E2E5A] text-sm italic">{props.author}</h2>
         </div>
 
-        <div className="flex gap-3 justify-between text-xs font-poppins font-bold">
+        <div className="text-sm font-poppins font-bold">
           <div className="flex gap-2">
-            <p className="text-text-grey">BIDS:</p>
-            <p>{formatter.format(props.bids)}</p>
-          </div>
-          <div className="flex gap-2">
-            <p className="text-text-grey">QUICK BUY:</p>
+            <p className="text-text-grey">PRICE:</p>
             <p>{formatter.format(props.quickBuy)}</p>
           </div>
         </div>
